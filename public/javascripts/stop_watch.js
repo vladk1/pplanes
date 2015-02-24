@@ -1,21 +1,18 @@
+var current = 0;
+var next = 1;
+var frame = 0;
 
-	var canvas = document.getElementById('canvas');
-	var secondsCanvas = document.getElementById('seconds_canvas');
-	var minutesCanvas = document.getElementById('minutes_canvas');
+var dec_current = 0;
+var dec_next = 1;
+var dec_frame = 0;
 
-	var secCtx = canvas.getContext('2d');
-	secCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
-	secCtx.lineWidth = 5;
+var min_current = 0;
+var min_next = 1;
+var min_frame = 0;
 
-	var minCtx = minutesCanvas.getContext('2d');
-	minCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
-	minCtx.lineWidth = 5;
+var animateMinutes = 0;
 
-	var current = 0;
-	var next = 1;
-	var frame = 0;
-
-	var points = [
+var points = [
 		[[44.5, 100], [100, 18], [156, 100], [100, 180], [44.5, 100]], // 0
 		[[77, 20.5], [104.5, 20.5], [104.5, 181], [104.5, 181], [104.5, 181]], //1
 		[[56, 60], [144.5, 61], [108, 122], [57, 177], [147, 177]], // 2
@@ -54,19 +51,13 @@
 		[[54, 134], [148, -8], [129, 121], [90, 180]] // 9
 	];
 
-	/**
-	 * Accelerate Decelerate interpolator.
-	 */
-	function getInterpolation(input) {
-	    return (Math.cos((input + 1) * Math.PI) / 2) + 0.5;
-	}
-	
-	/**
+
+/**
 	 * Draws each frame of the animation.
 	 */
-	function draw(i, j, frame) {
-	    secCtx.clearRect(0, 0, 200, 200);
-	    secCtx.beginPath();
+	function draw(i, j, frame, context) {
+	    context.clearRect(0, 0, 200, 200);
+	    context.beginPath();
 	
 	    var current = points[i];
 	    var next = points[j];
@@ -81,12 +72,12 @@
 	    frame = getInterpolation(frame);
 	    
 	    // First point.
-	    secCtx.moveTo(current[0][0] + ((next[0][0] - current[0][0]) * frame),
+	    context.moveTo(current[0][0] + ((next[0][0] - current[0][0]) * frame),
 	               current[0][1] + ((next[0][1] - current[0][1]) * frame));
 	    
 	    // Rest of the points connected as bezier curve.
 	    for (var index = 1; index < 5; index++) {
-	        secCtx.bezierCurveTo(
+	        context.bezierCurveTo(
 	            curr1[index-1][0] + ((next1[index-1][0] - curr1[index-1][0]) * frame),
 	            curr1[index-1][1] + ((next1[index-1][1] - curr1[index-1][1]) * frame),
 	            curr2[index-1][0] + ((next2[index-1][0] - curr2[index-1][0]) * frame),
@@ -95,9 +86,12 @@
 	            current[index][1] + ((next[index][1] - current[index][1]) * frame));
 	    }
 	    
-	    secCtx.stroke();
+	    context.stroke();
 	}
-	
+
+
+
+
 	/*
 	 * Each number change is divided into 10 frames.
 	 * First two frames and last two frames are static.
@@ -107,7 +101,7 @@
 	    // Frames 0, 1 is the first pause.
 	    // Frames 9, 10 is the last pause.
 	    if (frame >= 2 && frame <= 8) {
-	        draw (current, next, (frame - 2) / 6);
+	        draw(current, next, (frame - 2) / 6, secCtx);
 	    }
 	
 	    frame++;
@@ -121,11 +115,90 @@
 	        // Reset to zarro.
 	        if (next == 10) {
 	            next = 0;
+	            // incrDecSec();
+	            decTimeOut = setTimeout(nextDecSecFrame, 100);
 	        }
 	    }
 	
-	    setTimeout(nextFrame, 100);
+		if (stopWatch === 0) {
+	    	setTimeout(nextFrame, 100);
+		}
 	}
+
+
+	function nextDecSecFrame() {
+		console.log("nextDecSecFrame called!");
+		if (animateMinutes === 1) {
+			setTimeout(nextMinFrame, 100);
+			animateMinutes = 0;
+			var textMinutesView = document.getElementById("text_min");
+			textMinutesView.style.visibility='visible'; 
+		}
+		
+	    // Frames 0, 1 is the first pause.
+	    // Frames 9, 10 is the last pause.
+	    if (dec_frame >= 2 && dec_frame <= 8) {
+	        draw(dec_current, dec_next, (dec_frame - 2) / 6, dec_secCtx);
+	    }
 	
-	// Start the animation.
-	setTimeout(nextFrame, 100);
+	    dec_frame++;
+	
+	    // Each number change has 10 frames. Reset.
+	    if (dec_frame == 10) {
+
+	        dec_frame = 0;
+	        dec_current = dec_next;
+	        dec_next++;
+
+	        // clearTimeout(decTimeOut);
+	
+	        // Reset to zarro.
+	        if (dec_next == 6) {
+	            dec_next = 0;
+	            animateMinutes = 1;
+	            // incrMin();
+	            // setTimeout(nextMinFrame, 100);
+	        }
+	        
+	    } else {
+	    	setTimeout(nextDecSecFrame, 100);
+	    }
+	}
+
+	function nextMinFrame() {
+		console.log("nextDecSecFrame called!");
+	    // Frames 0, 1 is the first pause.
+	    // Frames 9, 10 is the last pause.
+	    if (min_frame >= 2 && min_frame <= 8) {
+	        draw(min_current, min_next, (min_frame - 2) / 6, minCtx);
+	    }
+	
+	    min_frame++;
+	
+	    // Each number change has 10 frames. Reset.
+	    if (min_frame == 10) {
+	        min_frame = 0;
+	        min_current = min_next;
+	        min_next++;
+	        // clearTimeout(decTimeOut);
+	
+	        // Reset to zarro.
+	        if (min_next == 6) {
+	            min_next = 0;
+	            // setTimeout(nextMinFrame, 100);
+	            // incrMin();
+	        }
+	    } else {
+	    	setTimeout(nextMinFrame, 100);
+	    }
+	}
+
+
+
+	/**
+	 * Accelerate Decelerate interpolator.
+	 */
+	function getInterpolation(input) {
+	    return (Math.cos((input + 1) * Math.PI) / 2) + 0.5;
+	}
+

@@ -1,0 +1,22 @@
+{
+  "name": "pplane",
+  "version": "0.0.1",
+  "description": "paper planes!",
+  "license": "MIT",
+  "keywords": [
+    "vlad"
+  ],
+  "authors": [
+    "vlad"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.4"
+  }
+}

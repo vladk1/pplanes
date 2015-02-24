@@ -1,0 +1,158 @@
+ body {
+      font-family: 'Roboto';
+      margin: 0;
+    }
+    
+    section {
+      padding: 40px;
+      min-height: 300px;
+    }
+
+
+	
+
+	h1 {
+		background-color: black;
+		color: white;
+		height: 40px;
+		font-size: 24px;
+		font-weight: normal;
+		left: 0;
+		line-height: 40px;
+		position: fixed;
+		text-align: center;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+	h1 a {
+		border-bottom: 1px solid white;
+		color: white;
+		display: inline-block;
+		line-height: 30px;
+		text-decoration: none;
+	}
+	.photo {
+			background-attachment: fixed;
+			background-position: 50% 0;
+			background-repeat: no-repeat;
+			height: 750px;
+			max-width:100%; 
+			max-height:100%;
+			position: relative;
+	}
+	.photo span {
+		bottom: 0;
+		color: white;
+		display: block;
+		left: 50%;
+		margin-left: -640px;
+		font-size: 38px;
+		padding: 10px;
+		position: absolute;
+		text-shadow: 0 2px 0 black, 0 0 10px black;
+		width: 1280px;
+	}
+
+
+	
+
+	.firstslide_title {
+		width: 700px ;
+		margin-left: auto ;
+		margin-right: auto ;
+		text-align: center ;		
+		color: white;
+		font-size: 38px;
+		text-shadow: 0 1px 0 black, 0 0 1px black;
+		padding-top: 30px;
+	}
+
+	core-header-panel {
+      float: left;
+      width: 100%;
+      height: 100%;
+    }
+    
+    core-header-panel[mode=cover]::shadow #mainContainer {
+      left: 70px;
+    }
+
+    .core-header {
+      height: 60px;
+      line-height: 60px;
+      font-size: 30px;
+      padding: 10px 30px;
+      background-color: #4F7DC9;
+      color: #FFF;
+      transition: height 0.2s;
+    }
+    
+    .core-header.tall {
+      height: 180px;
+    }
+    
+    .core-header.medium-tall {
+      height: 120px;
+    }
+
+    .content {
+	  max-width:100%; 
+	  max-height:100%;
+    }
+
+
+   
+
+	/* iframe itself */
+	/*iframe {
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    border: none;
+	}*/
+
+	
+	.embed-container {
+	    border: 1px solid black;
+		padding: 1px 1px 1px 1px;
+		width: auto;
+		float: left;
+	}
+				
+	.embed-container iframe {
+	    width: 100%;
+	    height: 100%;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    border: none;
+	}
+
+
+	paper-button.blue {
+	  position: absolute;
+      color: #4285f4;
+      width:200px;
+      margin: 10px;
+      right:100px;
+      top:10px;
+    }
+    paper-button.red {
+      position: absolute;
+      color: #ff4d4d;
+      width:200px;
+      margin: 10px;
+      right:100px;
+      top:60px;
+    }
+
+    paper-button[raised].blue {
+      background: #4285f4;
+      color: #fff;
+    }
+    paper-button[raised].red {
+      background: #ff4d4d;
+      color: #fff;
+    }
+	

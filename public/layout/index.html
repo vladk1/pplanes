@@ -1,0 +1,149 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+	<meta name="viewport" content="width=device-width" />
+
+	<script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<link rel="import" href="/bower_components/core-header-panel/core-header-panel.html">
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link rel="import" href="/bower_components/paper-button/paper-button.html">
+
+	<!-- <link rel="import" href="/stylesheets/material_header_style.css"> -->
+
+	<!-- <link rel="import" href="/stylesheets/material_design.css"> -->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/material_design.css" media="screen" />
+
+	<style>
+
+	   	.firstslide {
+			background-attachment: fixed;
+			background-position: 50% 0;
+			background-repeat: no-repeat;
+			height: 450px;
+			background-image: url(images/pplanes_background.jpg);
+		}
+		.seperator {
+			background-attachment: fixed;
+			background-position: 50% 0;
+			background-repeat: no-repeat;
+			height: 25px;
+			position: relative;
+			background-image: url(images/pplanes_background.jpg);
+		}
+	
+	</style>
+
+
+	<script type="text/javascript">
+
+		function animateToEstim() {
+			console.log("hi");
+			$('html,body').animate({
+   				scrollTop: $("#start_estim").offset().top
+   			}, 'slow');
+		}
+
+		function animateToStart() {
+			console.log("hi start");
+			$('html,body').animate({
+   				scrollTop: $("#start_game").offset().top
+   			}, 'slow');
+		}
+
+	</script>
+
+
+</head>
+
+<body>
+
+	<div class="firstslide" data-stellar-background-ratio="0.5">
+		<div class="firstslide_title">Welcome to our Game!</div>
+		<div class="firstslide_title">bla bla bla</div>
+		<div class="firstslide_title">We love planes!</div>
+	</div>
+
+	<div class="photo">
+
+		<core-header-panel mode="waterfall">
+			<div class="core-header">Try to build every plane without time limit!</div>
+			<div class="content">
+
+				<div class="embed-container">
+					<iframe src="layout/paper_planes_instr.html">
+						
+					</iframe>
+					
+				</div>
+				
+
+				<!-- <iframe class="fit_iframe" src="layout/paper_planes_instr.html"></iframe>
+			-->
+			</div>
+
+			<paper-button raised id="go_to_estim" onclick="animateToEstim()" class="blue">Use estimation tool!</paper-button>
+			<paper-button raised id="go_to_start" onclick="animateToStart()" class="red">Start the game!</paper-button>
+		
+		</core-header-panel>
+		
+	</div>
+	<div class="seperator" data-stellar-background-ratio="10.5"></div>
+
+
+
+	<div id="start_estim" class="photo">
+		<core-header-panel mode="waterfall">
+			<div class="core-header">Estimation tool</div>
+			<div class="content">
+
+				<div class="embed-container">
+					<iframe src="https://rlove.shinyapps.io/paperplanes/#lowTimeToBuild_1=2;highTimeToBuild_1=50;lowFlyDistance_1=2;highFlyDistance_1=5;lowTimeToBuild_2=40;highTimeToBuild_2=60;lowFlyDistance_2=5;highFlyDistance_2=9;lowTimeToBuild_3=20;highTimeToBuild_3=40;lowFlyDistance_3=4;highFlyDistance_3=7"></iframe>
+				</div>
+
+			</div>
+		</core-header-panel>
+	</div>
+	<div class="seperator" data-stellar-background-ratio="10.5"></div>
+
+
+
+	<div id="start_game" class="photo">
+		<core-header-panel mode="waterfall">
+			<div class="core-header">Start!</div>
+			<div class="content">
+
+				<div class="embed-container">
+					<iframe src="layout/start_game.html"></iframe>
+				</div>
+			
+			</div>
+		</core-header-panel>
+	</div>
+
+	<div class="photo">
+		<core-header-panel mode="waterfall">
+			<div class="core-header">Your Score:</div>
+			<div class="content">
+				<iframe src="layout/slide1.html"></iframe>
+			</div>
+		</core-header-panel>
+	</div>
+	<div class="seperator" data-stellar-background-ratio="10.5"></div>
+
+
+
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+
+	<script src="/javascripts/angular.js"></script>
+
+	<script src="/javascripts/angular-route.js"></script>
+	<script src="/javascripts/routes.js"></script>
+	<script src="/javascripts/controllers.js"></script>
+
+	<script src="/javascripts/stellar.js"></script>
+
+</body>
+</html>

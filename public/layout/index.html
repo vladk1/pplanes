@@ -7,9 +7,13 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+	<script type="text/javascript" src="/javascripts/bundle.js"></script>
+
+
 	<link rel="import" href="/bower_components/core-header-panel/core-header-panel.html">
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<link rel="import" href="/bower_components/paper-button/paper-button.html">
+	<link rel="import" href="/bower_components/paper-input/paper-input.html">
 
 	<!-- <link rel="import" href="/stylesheets/material_header_style.css"> -->
 
@@ -36,7 +40,7 @@
 			position: relative;
 		}
 
-		#website_goal, #monte_carlo_method, #r_tool {
+		#website_goal, #r_tool {
 			background-attachment: fixed;
 			background-position: 50% 0;
 			background-repeat: no-repeat;
@@ -45,6 +49,17 @@
 			max-height:100%;
 			position: relative;
 		}
+ 		
+ 		#monte_carlo_method {
+ 			background-attachment: fixed;
+			background-position: 50% 0;
+			background-repeat: no-repeat;
+			height: 350px;
+			max-width:100%; 
+			max-height:100%;
+			position: relative;
+ 		}
+
 
 		.seperator {
 			background-attachment: fixed;
@@ -61,10 +76,14 @@
 	<script type="text/javascript">
 
 		function animateToEstim() {
-			console.log("hi");
-			$('html,body').animate({
-   				scrollTop: $("#start_estim").offset().top
-   			}, 'slow');
+			// console.log("hi");
+			// $('html,body').animate({
+   // 				scrollTop: $("#start_estim").offset().top
+   // 			}, 'slow');
+   			$(function() {
+			    rtool_logic();
+			});
+   			
 		}
 
 		function animateToStart() {
@@ -102,13 +121,27 @@
 	<div class="seperator" data-stellar-background-ratio="10.5"></div>
 
 
-	<div id="r_tool">
+	<!-- <div id="r_tool">
 		<core-header-panel mode="waterfall">
 			<div class="core-header">R Tool</div>
 			<div class="content">
 
 				<div class="embed-container">
 					<iframe src="layout/r_tool.html"></iframe>
+				</div>
+
+			</div>
+		</core-header-panel>
+	</div>
+	<div class="seperator" data-stellar-background-ratio="10.5"></div> -->
+
+	<div id="r_tool">
+		<core-header-panel mode="waterfall">
+			<div class="core-header">BCBA (Bayesian Cost-Benefit Analysis)</div>
+			<div class="content">
+
+				<div class="embed-container">
+					<iframe src="layout/bayesian_analysis.html"></iframe>
 				</div>
 
 			</div>
@@ -140,15 +173,54 @@
 
 				<div class="embed-container">
 					<iframe src="layout/paper_planes_instr.html">
-						
 					</iframe>
 					
 				</div>
 				
 			</div>
 
-			<paper-button raised id="go_to_estim" onclick="animateToEstim()" class="blue">Use estimation tool!</paper-button>
-			<paper-button raised id="go_to_start" onclick="animateToStart()" class="red">Start the game!</paper-button>
+			<paper-button raised id="go_to_estim" onclick="animateToEstim()" class="blue">Use estimation tool</paper-button>
+			<paper-button raised id="go_to_start" onclick="animateToStart()" class="red">Start the game</paper-button>
+
+			<div id="estim_box">
+
+				<div class="header_font"> Predict your time to build plane and distance it will fly:</div>
+
+				<div class="plane_block">
+					<div class="estim_plane"> Plane 1: </div>
+
+					<paper-input id="min_dist_1" class="estim_plane" label="min distance" floatingLabel> </paper-input>
+					<paper-input id="max_dist_1" class="estim_plane" label="max distance" floatingLabel></paper-input>
+
+					<div class="estim_plane">  </div>
+
+					
+					<paper-input id="min_time_1" class="estim_plane" label="min time" floatingLabel></paper-input>
+					<paper-input id="max_time_1" class="estim_plane" label="max time" floatingLabel></paper-input>
+				</div>
+
+
+				<div class="plane_block">
+					<div class="estim_plane"> Plane 2: </div>
+					<paper-input id="min_dist_2" class="estim_plane"  label="min distance" floatingLabel></paper-input>
+					<paper-input id="max_dist_2" class="estim_plane"  label="max distance" floatingLabel></paper-input>
+
+					<div class="estim_plane">  </div>
+
+					<paper-input id="min_time_2" class="estim_plane" label="min time" floatingLabel></paper-input>
+					<paper-input id="max_time_2" class="estim_plane"  label="max time" floatingLabel></paper-input>
+				</div>
+
+				<div class="plane_block" >
+					<table id="estimations_table" class="table table-bordered">
+				  	</table>
+				</div>
+
+				
+
+			</div>
+
+
 		
 		</core-header-panel>
 		
@@ -157,7 +229,7 @@
 
 
 
-	<div id="start_estim" class="photo">
+	<!-- <div id="start_estim" class="photo">
 		<core-header-panel mode="waterfall">
 			<div class="core-header">Estimation tool</div>
 			<div class="content">
@@ -169,7 +241,7 @@
 			</div>
 		</core-header-panel>
 	</div>
-	<div class="seperator" data-stellar-background-ratio="10.5"></div>
+	<div class="seperator" data-stellar-background-ratio="10.5"></div> -->
 
 
 

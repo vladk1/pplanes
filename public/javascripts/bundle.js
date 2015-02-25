@@ -416,9 +416,9 @@ exports.histogram = histogram;
 
 },{}],6:[function(require,module,exports){
 $(document).ready(function(){
-    $("#button_run").click(function(){
-    	Rtool_logic();
-    });
+    // $("#button_run").click(function(){
+    // 	Rtool_logic();
+    // });
 });
 
 
@@ -460,20 +460,27 @@ function generate_cb_sim_mean(N, cb_data) {
 	return [Cost, Benefit];
 }
 
+$(function() {
+   
 var tac = 0;
-function Rtool_logic() {
+function rtool_logic() {
+
+	console.log("rtool_logic");
 	// LOL
 	var N = Math.pow(10,3);
 	var cb_data = [];
-	cb_data[0] = document.getElementById('buildLower1').value
-	cb_data[1] = document.getElementById('buildUpper1').value
-	cb_data[2] = document.getElementById('distanceLower1').value
-	cb_data[3] = document.getElementById('distanceUpper1').value
 
-	cb_data[4] = document.getElementById('buildLower2').value
-	cb_data[5] = document.getElementById('buildUpper2').value
-	cb_data[6] = document.getElementById('distanceLower2').value
-	cb_data[7] = document.getElementById('distanceUpper2').value
+	cb_data[0] = document.getElementById('min_time_1').value
+	cb_data[1] = document.getElementById('max_time_1').value
+	cb_data[2] = document.getElementById('min_dist_1').value
+	cb_data[3] = document.getElementById('max_dist_1').value
+
+	cb_data[4] = document.getElementById('min_time_2').value
+	cb_data[5] = document.getElementById('max_time_2').value
+	cb_data[6] = document.getElementById('min_dist_2').value
+	cb_data[7] = document.getElementById('max_dist_2').value
+
+
 
 	if (cb_data.every(isNumber)) {
 		var sim = generate_cb_sim_mean(N, cb_data);
@@ -487,6 +494,9 @@ function Rtool_logic() {
 		loadTable('estimations_table', ['Plane', 'ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
 	}
 }
+ window.rtool_logic=rtool_logic;
+});
+
 // auxiliary function to check input data
 function isNumber(elem, index, array) {
 	return !isNaN(parseFloat(elem));
@@ -560,12 +570,17 @@ function getVaR(NB, q) {
 	return result;
 }
 
+$(function() {
+
 function loadTable(tableId, fields, data) {
+	console.log("loadTable tableId="+tableId);
     var rows = '<thead>' + '<tr>';
     $.each(fields, function(index, field){
     	rows += '<th>' + field + '' + '</td>';
     });
     rows += '</tr>' + '</thead>';
+
+    rows += '<tbody>';
 
     $.each(data, function(index, item) {
         var row = '<tr>';
@@ -575,6 +590,10 @@ function loadTable(tableId, fields, data) {
         rows += row + '</tr>';
     });
     rows += '</tbody>';
+
     $('#' + tableId).html($('#'+tableId).val() + rows);
 }
+ window.loadTable=loadTable;
+});
+
 },{"compute-quantile":1,"randgen":4}]},{},[6]);

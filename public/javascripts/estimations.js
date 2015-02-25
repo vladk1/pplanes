@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#button_run").click(function(){
+    $("#go_to_estim").click(function(){
     	Rtool_logic();
     });
 });
@@ -10,18 +10,17 @@ $(document).ready(function(){
 function rnorm_fromCI(N, lower, upper, minVal) {
 	var randgen = require( 'randgen' );
 
-	//if(typeof(minVal)==='undefined') minVal = null;
-	minVal = 0;
+	if(typeof(minVal)==='undefined') minVal = null;
+
+	lower = parseInt(lower);
+	upper = parseInt(upper);
 	var mean = (lower + upper)/2;
 	var sd = (upper - lower)/3.29; // this is the 95% confidence interval
 	var result_array = Array(N);
 	var result = 0;
-
 	for (var i=0; i<N; i++){
-		result = randgen.rnorm(mean, sd);
-		if(isNumber(minVal)) {
-			result_array[i] = result;//((result > minVal) ? result : minVal);
-		}
+		result = randgen.rnorm(mean,sd);
+		result_array[i] = ((result > minVal) ? result : minVal);
     }
     return result_array;
 }
@@ -40,7 +39,6 @@ function generate_cb_sim_mean(N, cb_data) {
 		Cost[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 0], cb_data[plane_offset + 1], 0);
 		Benefit[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 2], cb_data[plane_offset + 3], 0);
 	}
-	console.log(Cost);
 
 	return [Cost, Benefit];
 }
@@ -72,6 +70,7 @@ function Rtool_logic() {
 		loadTable('estimations_table', ['Plane', 'ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
 	}
 }
+
 // auxiliary function to check input data
 function isNumber(elem, index, array) {
 	return !isNaN(parseFloat(elem));
@@ -93,6 +92,7 @@ function planes_analysis(Cost, Benefit) {
 
 	return [ECost, EBenefit, ENB, LP, VaR];
 }
+
 // auxiliary function to compute the column mean/avg of an array of arrays
 // returns an array of means/avgs
 function getMean(elems) {
@@ -134,6 +134,7 @@ function getLossProbability(elems) {
 	}
 	return n_lp;
 }
+
 function getVaR(NB, q) {
 	var quantile = require( 'compute-quantile' );
 

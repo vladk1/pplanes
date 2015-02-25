@@ -1,9 +1,19 @@
-
+var tra = 0;
+$(document).ready(function(){
+	$("#summary").val("I got the js code, this works");
+    $("#button_run").click(function(){
+    	// $("#summary").val("trala test " + tra);
+    	// tra ++;
+    	Rtool_logic();
+    });
+});
 
 
 // rnorm_fromCI returns an array of values normal sampled
 // from the interval given with confidence interval 95%
 function rnorm_fromCI(N, lower, upper, minVal) {
+	var randgen = require( 'randgen' );
+
 	if(typeof(minVal)==='undefined') a = null;
 	var mean = (lower + upper)/2;
 	var sd = (upper - lower)/3.29; // this is the 95% confidence interval
@@ -11,7 +21,7 @@ function rnorm_fromCI(N, lower, upper, minVal) {
 	var result = 0;
 
 	for (var i=0; i<N; i++){
-		result = $scope.rnorm(mean, sd); // rnorm from randgen npm !!! need install
+		result = randgen.rnorm(mean, sd);
 		if(isNumber(minVal)) {
 			result_array[i] = ((result > minVal) ? result : minVal);
 		}
@@ -30,16 +40,18 @@ function generate_cb_sim_mean(N, cb_data) {
 
 	for(var	k=0; k<n_planes; k++){
 		plane_offset = 4*k;
-		for(var i=0; i<N; i++){
-			Cost[i] 	= rnorm_fromCI(N, cb_data[plane_offset + 0], cb_data[plane_offset + 1], 0);
-			Benefit[i] 	= rnorm_fromCI(N, cb_data[plane_offset + 2], cb_data[plane_offset + 3], 0);
-		}
+		Cost[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 0], cb_data[plane_offset + 1], 0);
+		Benefit[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 2], cb_data[plane_offset + 3], 0);
 	}
 
 	return [Cost, Benefit];
 }
 
+var tac = 0;
 function Rtool_logic() {
+
+	$("#summary").val("from Rtool_logic " + tac);
+	tac ++;
 	// LOL
 	var N = Math.pow(10,3);
 	var cb_data = [];
@@ -60,10 +72,13 @@ function Rtool_logic() {
 
 		// (ECost, EBenefit, ENB, LP, VaR)
 		var result = planes_analysis(Cost, Benefit);
-		document.getElementById("summary").innerHTML = 	"A --> ECost: " + result[0][0] + " EBenefit: " + result[1][0] +
+		var jsonData = [{ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
+						{ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
+		loadTable('estimations_table', ['ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
+		$("#summary").val("A --> ECost: " + result[0][0] + " EBenefit: " + result[1][0] +
 												" ENB: " + result[2][0] + " LP: " + result[3][0] + " VaR: " + result[4][0] +
 														"B --> ECost: " + result[0][1] + " EBenefit: " + result[1][1] +
-												" ENB: " + result[2][1] + " LP: " + result[3][1] + " VaR: " + result[4][1];
+												" ENB: " + result[2][1] + " LP: " + result[3][1] + " VaR: " + result[4][1]);
 	}
 }
 // auxiliary function to check input data
@@ -85,7 +100,7 @@ function planes_analysis(Cost, Benefit) {
 
 	// graph absent atm
 
-	return (ECost, EBenefit, ENB, LP, VaR);
+	return ([ECost, EBenefit, ENB, LP, VaR]);
 }
 // auxiliary function to compute the column mean/avg of an array of arrays
 // returns an array of means/avgs
@@ -101,15 +116,19 @@ function getMean(elems) {
 	}
 	return n_mean;
 }
+
 // auxiliary function
 function getNB(Cost, Benefit) {
 	var NB = Array();
-	for(var i=0; i<NB.length; i++){
-		for(var j=0; j<NB[i].length; j++){
+	for(var i=0; i<Cost.length; i++){
+		NB[i] = Array();
+		for(var j=0; j<Cost[i].length; j++){
 			NB[i][j] = Benefit[i][j] - Cost[i][j];
 		}
 	}
+	return NB;
 }
+
 // auxiliary function to compute the loss probability
 // it is based on mean
 function getLossProbability(elems) {
@@ -125,6 +144,8 @@ function getLossProbability(elems) {
 	return n_lp;
 }
 function getVaR(NB, q) {
+	var quantile = require( 'compute-quantile' );
+
 	if(typeof(q)==='undefined') q = 0.01;
 	var result = Array(NB.length);
 	for(var i=0; i<NB.length; i++){
@@ -133,4 +154,14 @@ function getVaR(NB, q) {
 	return result;
 }
 
-//exports.Rtool_logic = Rtool_logic;
+function loadTable(tableId, fields, data) {
+    var rows = '';
+    $.each(data, function(index, item) {
+        var row = '<tr>';
+        $.each(fields, function(index, field) {
+            row += '<td>' + item[field+''] + '</td>';
+        });
+        rows += row + '<tr>';
+    });
+    $('#' + tableId).html(rows);
+}

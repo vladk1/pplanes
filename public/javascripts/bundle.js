@@ -415,7 +415,6 @@ exports.rvlist = vectorize(rlist);
 exports.histogram = histogram;
 
 },{}],6:[function(require,module,exports){
-
 var tra = 0;
 $(document).ready(function(){
 	$("#summary").val("I got the js code, this works");
@@ -426,11 +425,11 @@ $(document).ready(function(){
     });
 });
 
+
 // rnorm_fromCI returns an array of values normal sampled
 // from the interval given with confidence interval 95%
 function rnorm_fromCI(N, lower, upper, minVal) {
 	var randgen = require( 'randgen' );
-	// var normalDist = math.distribution('normal'); // create a normal distribution
 
 	if(typeof(minVal)==='undefined') a = null;
 	var mean = (lower + upper)/2;
@@ -439,8 +438,6 @@ function rnorm_fromCI(N, lower, upper, minVal) {
 	var result = 0;
 
 	for (var i=0; i<N; i++){
-		// rnorm(mean, sd); // rnorm from randgen npm !!! need install
-		// normalDist.random(mean-sd, mean+sd);                      // get a random value between 0 and 10
 		result = randgen.rnorm(mean, sd);
 		if(isNumber(minVal)) {
 			result_array[i] = ((result > minVal) ? result : minVal);
@@ -452,16 +449,15 @@ function rnorm_fromCI(N, lower, upper, minVal) {
 // N is number of simulations
 // cb_data template: [buildLower, buildUpper, distanceLower, distanceUpper]
 function generate_cb_sim_mean(N, cb_data) {
-	//var n_planes = cb_data.length / 4;
-	var n_planes = 2;
-
+	var n_planes = cb_data.length / 4;
+	
 	var Cost 	= Array(n_planes);
 	var Benefit = Array(n_planes);
 	var plane_offset;
 
 	for(var	k=0; k<n_planes; k++){
 		plane_offset = 4*k;
-		Cost[k]		= rnorm_fromCI(N, cb_data[plane_offset + 0], cb_data[plane_offset + 1], 0);
+		Cost[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 0], cb_data[plane_offset + 1], 0);
 		Benefit[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 2], cb_data[plane_offset + 3], 0);
 	}
 
@@ -470,10 +466,11 @@ function generate_cb_sim_mean(N, cb_data) {
 
 var tac = 0;
 function Rtool_logic() {
-	// LOL
-	var N = Math.pow(10,3);
+
 	$("#summary").val("from Rtool_logic " + tac);
 	tac ++;
+	// LOL
+	var N = Math.pow(10,3);
 	var cb_data = [];
 	cb_data[0] = document.getElementById('buildLower1').value
 	cb_data[1] = document.getElementById('buildUpper1').value
@@ -492,11 +489,13 @@ function Rtool_logic() {
 
 		// (ECost, EBenefit, ENB, LP, VaR)
 		var result = planes_analysis(Cost, Benefit);
+		var jsonData = [{ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
+						{ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
+		loadTable('estimations_table', ['ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
 		$("#summary").val("A --> ECost: " + result[0][0] + " EBenefit: " + result[1][0] +
 												" ENB: " + result[2][0] + " LP: " + result[3][0] + " VaR: " + result[4][0] +
 														"B --> ECost: " + result[0][1] + " EBenefit: " + result[1][1] +
-												" ENB: " + result[2][1] + " LP: " + result[3][1] + " VaR: " + result[4][1]
-						  );
+												" ENB: " + result[2][1] + " LP: " + result[3][1] + " VaR: " + result[4][1]);
 	}
 }
 // auxiliary function to check input data
@@ -534,6 +533,7 @@ function getMean(elems) {
 	}
 	return n_mean;
 }
+
 // auxiliary function
 function getNB(Cost, Benefit) {
 	var NB = Array();
@@ -545,6 +545,7 @@ function getNB(Cost, Benefit) {
 	}
 	return NB;
 }
+
 // auxiliary function to compute the loss probability
 // it is based on mean
 function getLossProbability(elems) {
@@ -561,14 +562,24 @@ function getLossProbability(elems) {
 }
 function getVaR(NB, q) {
 	var quantile = require( 'compute-quantile' );
+
 	if(typeof(q)==='undefined') q = 0.01;
 	var result = Array(NB.length);
 	for(var i=0; i<NB.length; i++){
-		//result[i] = quantile(NB[i], q); // unsorted array
-		result[i] = quantile(NB[i], q);
+		result[i] = quantile(NB[i], q); // unsorted array
 	}
 	return result;
 }
 
-//exports.Rtool_logic = Rtool_logic;
+function loadTable(tableId, fields, data) {
+    var rows = '';
+    $.each(data, function(index, item) {
+        var row = '<tr>';
+        $.each(fields, function(index, field) {
+            row += '<td>' + item[field+''] + '</td>';
+        });
+        rows += row + '<tr>';
+    });
+    $('#' + tableId).html(rows);
+}
 },{"compute-quantile":1,"randgen":4}]},{},[6]);

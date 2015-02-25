@@ -50,15 +50,15 @@ function Rtool_logic() {
 	// LOL
 	var N = Math.pow(10,3);
 	var cb_data = [];
-	cb_data[0] = document.getElementById('buildLower1').value
-	cb_data[1] = document.getElementById('buildUpper1').value
-	cb_data[2] = document.getElementById('distanceLower1').value
-	cb_data[3] = document.getElementById('distanceUpper1').value
+	cb_data[0] = document.getElementById('min_time_1').value;
+	cb_data[1] = document.getElementById('max_time_1').value;
+	cb_data[2] = document.getElementById('min_dist_1').value;
+	cb_data[3] = document.getElementById('max_dist_1').value;
 
-	cb_data[4] = document.getElementById('buildLower2').value
-	cb_data[5] = document.getElementById('buildUpper2').value
-	cb_data[6] = document.getElementById('distanceLower2').value
-	cb_data[7] = document.getElementById('distanceUpper2').value
+	cb_data[4] = document.getElementById('min_time_2').value;
+	cb_data[5] = document.getElementById('max_time_2').value;
+	cb_data[6] = document.getElementById('min_dist_2').value;
+	cb_data[7] = document.getElementById('max_dist_2').value;
 
 	if (cb_data.every(isNumber)) {
 		var sim = generate_cb_sim_mean(N, cb_data);

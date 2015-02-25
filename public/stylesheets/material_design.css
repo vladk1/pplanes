@@ -140,6 +140,8 @@
 	    border: none;
 	}
 
+	
+
 
 	paper-button.blue {
 	  position: absolute;
@@ -157,6 +159,39 @@
       right:100px;
       top:60px;
     }
+
+    #estim_box {
+	  position: absolute;
+      width:600px;
+      margin: 10px;
+      right:160px;
+      top:100px;
+	}
+
+	.estim_plane {
+	  position: relative;
+      float: left;
+      margin: 10px;
+	}
+	paper-input.estim_plane {
+	  width: 100px;
+	  margin: 5px;
+	}
+
+	.plane_block {
+		display: inline-block;
+	}
+
+	.header_font {
+		color: #4F7DC9;
+		font-size: 20px;
+		margin: 10px;
+		opacity: 0.87;
+		/*text-align: center;*/
+		
+	}
+
+
 
     paper-button[raised].blue {
       background: #4285f4;

@@ -4,6 +4,7 @@
 		<link rel="stylesheet" type="text/css" href="/stylesheets/material_design.css" media="screen" />
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 		<link rel="import" href="/bower_components/paper-button/paper-button.html"/>
+		<link rel="import" href="/bower_components/core-header-panel/core-header-panel.html">
 
 		<style>
 			body {
@@ -13,16 +14,24 @@
 			canvas {
     			background: #FFFFFF;
     			margin: 0px;
-    			margin-top: 5px;
+    			margin-top: 10px;
 			}
 
 			#d1, #d2, #d3  {
 				position: relative;
 				display: inline-block;
 			}
+			#d3 {
+				margin-left: 50px;
+			}
 
 			#text_min {
 				visibility: hidden;
+			}
+			#final_score {
+				font-size: 35px;
+				font-family: 'Roboto';
+				margin-left: 10px;
 			}
 
 			.text {
@@ -31,20 +40,32 @@
 				font-family: 'Roboto';
 				color: #4F7DC9;
 				font-size: 30px;
-				margin: 5px;
+				margin: 10px;
 			}
 			
 
 		</style>
-
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/javascripts/stop_watch.js"></script>
+		<!-- type="text/javascript" src="/javascripts/resultGeneration.js"> -->
+		<!-- script> -->
 
 		<script type="text/javascript">
 
-			var canvas = document.getElementById('canvas');
+			function calculateResults() {
+				console.log("calculateResults");
+				// $('<p>Text</p>').appendTo('#final_score');
+				var scoreSeconds = current+dec_current*10+min_current*60;
+				$("#final_score").text(scoreSeconds + " points");
 
-		</script>
+				
+				$("#result_container").removeClass("core-header");
+				// remove a class
+				$("#result_container").addClass("core-red-header");
+				
+			}
 		
+		</script>
 
 	</head>
 	<body>
@@ -54,9 +75,6 @@
 		<paper-button raised id="finish_button" onclick="stopWatchClick()" class="red">Finished!</paper-button>
 
     	
-    	<!-- <canvas id="seconds_canvas" width="200" height="200"/>
-    	<canvas id="minutes_canvas" width="200" height="200"/> -->
-
     	<div id='d3'>
 	        <canvas id="min_canvas" width="160" height="200">
 	              Your browser does not support HTML5 Canvas.
@@ -82,45 +100,53 @@
 	    <div id="text_sec" class='text'>  
 	        sec
 	    </div>
+
+	   
+		<div id="result_container" class="core-header">
+			Your Score:
+			<span id="final_score"> </span>
+		</div>
+
 	    
     	
-
 		<script type="text/javascript">
 			
-	// var canvas = document.getElementById('canvas');
-	var secondsCanvas = document.getElementById('seconds_canvas');
-	var dec_secondsCanvas = document.getElementById('dec_seconds_canvas');
-	var minCanvas = document.getElementById('min_canvas');
+			// var canvas = document.getElementById('canvas');
+			var secondsCanvas = document.getElementById('seconds_canvas');
+			var dec_secondsCanvas = document.getElementById('dec_seconds_canvas');
+			var minCanvas = document.getElementById('min_canvas');
 
-	var decTimeOut;
+			var decTimeOut;
 
-	var secCtx = secondsCanvas.getContext('2d');
-	secCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
-	secCtx.lineWidth = 5;
+			var secCtx = secondsCanvas.getContext('2d');
+			secCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
+			secCtx.lineWidth = 5;
 
-	var dec_secCtx = dec_secondsCanvas.getContext('2d');
-	dec_secCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
-	dec_secCtx.lineWidth = 5;
+			var dec_secCtx = dec_secondsCanvas.getContext('2d');
+			dec_secCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
+			dec_secCtx.lineWidth = 5;
 
-	var minCtx = minCanvas.getContext('2d');
-	minCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
-	minCtx.lineWidth = 5;
-
-
-	var stopWatch = 0;
+			var minCtx = minCanvas.getContext('2d');
+			minCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
+			minCtx.lineWidth = 5;
 
 
-	function startWatchClick() {
-		// Start the animation.
-		setTimeout(nextFrame, 100);
-		stopWatch = 0;
-	}
+			var stopWatch = 0;
 
-	function stopWatchClick() {
-		// Start the animation.
-		stopWatch = 1;
-	}
+
+			function startWatchClick() {
+				// Start the animation.
+				setTimeout(nextFrame, 100);
+				stopWatch = 0;
+			}
+
+			function stopWatchClick() {
+				// Start the animation.
+				stopWatch = 1;
+				calculateResults(current, dec_current, min_current);
+			}
 
 		</script>
+
 	</body>
 </html>

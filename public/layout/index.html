@@ -30,7 +30,17 @@
 			background-attachment: fixed;
 			background-position: 50% 0;
 			background-repeat: no-repeat;
-			height: 350px;
+			height: 650px;
+			max-width:100%; 
+			max-height:100%;
+			position: relative;
+		}
+
+		#website_goal, #monte_carlo_method, #r_tool {
+			background-attachment: fixed;
+			background-position: 50% 0;
+			background-repeat: no-repeat;
+			height: 300px;
 			max-width:100%; 
 			max-height:100%;
 			position: relative;
@@ -77,8 +87,53 @@
 		<div class="firstslide_title">We love planes!</div>
 	</div>
 
-	<div class="photo">
+	<div id="website_goal">
+		<core-header-panel mode="waterfall">
+			<div class="core-header">Goal of the website</div>
+			<div class="content">
 
+				<div class="embed-container">
+					<iframe src="layout/goal_of_the_website.html"></iframe>
+				</div>
+
+			</div>
+		</core-header-panel>
+	</div>
+	<div class="seperator" data-stellar-background-ratio="10.5"></div>
+
+
+	<div id="r_tool">
+		<core-header-panel mode="waterfall">
+			<div class="core-header">R Tool</div>
+			<div class="content">
+
+				<div class="embed-container">
+					<iframe src="layout/r_tool.html"></iframe>
+				</div>
+
+			</div>
+		</core-header-panel>
+	</div>
+	<div class="seperator" data-stellar-background-ratio="10.5"></div>
+
+
+	<div id="monte_carlo_method">
+		<core-header-panel mode="waterfall">
+			<div class="core-header">Monte Carlo method</div>
+			<div class="content">
+
+				<div class="embed-container">
+					<iframe src="layout/monte_carlo_method.html"></iframe>
+				</div>
+
+			</div>
+		</core-header-panel>
+	</div>
+	<div class="seperator" data-stellar-background-ratio="10.5"></div>
+
+
+
+	<div class="photo">
 		<core-header-panel mode="waterfall">
 			<div class="core-header">Try to build every plane without time limit!</div>
 			<div class="content">
@@ -90,9 +145,6 @@
 					
 				</div>
 				
-
-				<!-- <iframe class="fit_iframe" src="layout/paper_planes_instr.html"></iframe>
-			-->
 			</div>
 
 			<paper-button raised id="go_to_estim" onclick="animateToEstim()" class="blue">Use estimation tool!</paper-button>
@@ -134,14 +186,14 @@
 		</core-header-panel>
 	</div>
 
-	<div class="photo">
+	<!-- <div class="photo">
 		<core-header-panel mode="waterfall">
-			<div class="core-header">Your Score:</div>
+			<div id="final_score" class="core-header">Your Score:</div>
 			<div class="content">
 				<iframe src="layout/slide1.html"></iframe>
 			</div>
 		</core-header-panel>
-	</div>
+	</div> -->
 	<div class="seperator" data-stellar-background-ratio="10.5"></div>
 
 

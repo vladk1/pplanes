@@ -79,6 +79,16 @@
       left: 70px;
     }
 
+    .core-red-header {
+      height: 60px;
+      line-height: 60px;
+      font-size: 30px;
+      padding: 10px 30px;
+      background-color: #ff4d4d;
+      color: #FFF;
+      transition: height 0.2s;
+    }
+
     .core-header {
       height: 60px;
       line-height: 60px;

@@ -427,7 +427,8 @@ $(document).ready(function(){
 function rnorm_fromCI(N, lower, upper, minVal) {
 	var randgen = require( 'randgen' );
 
-	if(typeof(minVal)==='undefined') a = null;
+	//if(typeof(minVal)==='undefined') minVal = null;
+	minVal = 0;
 	var mean = (lower + upper)/2;
 	var sd = (upper - lower)/3.29; // this is the 95% confidence interval
 	var result_array = Array(N);
@@ -436,7 +437,7 @@ function rnorm_fromCI(N, lower, upper, minVal) {
 	for (var i=0; i<N; i++){
 		result = randgen.rnorm(mean, sd);
 		if(isNumber(minVal)) {
-			result_array[i] = ((result > minVal) ? result : minVal);
+			result_array[i] = result;//((result > minVal) ? result : minVal);
 		}
     }
     return result_array;
@@ -449,13 +450,14 @@ function generate_cb_sim_mean(N, cb_data) {
 	
 	var Cost 	= Array(n_planes);
 	var Benefit = Array(n_planes);
-	var plane_offset;
+	var plane_offset = 0;
 
 	for(var	k=0; k<n_planes; k++){
 		plane_offset = 4*k;
 		Cost[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 0], cb_data[plane_offset + 1], 0);
 		Benefit[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 2], cb_data[plane_offset + 3], 0);
 	}
+	console.log(Cost);
 
 	return [Cost, Benefit];
 }

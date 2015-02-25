@@ -489,9 +489,9 @@ function Rtool_logic() {
 
 		// (ECost, EBenefit, ENB, LP, VaR)
 		var result = planes_analysis(Cost, Benefit);
-		var jsonData = [{ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
-						{ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
-		loadTable('estimations_table', ['ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
+		var jsonData = [{plane: 1, ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
+						{plane: 2, ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
+		loadTable('estimations_table', ['plane', 'ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
 		$("#summary").val("A --> ECost: " + result[0][0] + " EBenefit: " + result[1][0] +
 												" ENB: " + result[2][0] + " LP: " + result[3][0] + " VaR: " + result[4][0] +
 														"B --> ECost: " + result[0][1] + " EBenefit: " + result[1][1] +
@@ -572,14 +572,22 @@ function getVaR(NB, q) {
 }
 
 function loadTable(tableId, fields, data) {
-    var rows = '';
+    //var rows = "<thead><tr><th>#</th><th>Estimated Cost</th><th>Estimated Benefit</th><th>Estimated Net Benefit</th><th>Loss Probability</th><th>Value at Risk</th></tr></thead><tbody>";
+    
+    var rows = '<thead>' + '<tr>';
+    $.each(fields, function(index, field){
+    	rows += '<th>' + field + '' + '</td>';
+    });
+    rows += '</tr>' + '</thead>';
+
     $.each(data, function(index, item) {
         var row = '<tr>';
         $.each(fields, function(index, field) {
             row += '<td>' + item[field+''] + '</td>';
         });
-        rows += row + '<tr>';
+        rows += row + '</tr>';
     });
-    $('#' + tableId).html(rows);
+    rows += '</tbody>';
+    $('#' + tableId).html($('#'+tableId).val() + rows);
 }
 },{"compute-quantile":1,"randgen":4}]},{},[6]);

@@ -415,12 +415,8 @@ exports.rvlist = vectorize(rlist);
 exports.histogram = histogram;
 
 },{}],6:[function(require,module,exports){
-var tra = 0;
 $(document).ready(function(){
-	$("#summary").val("I got the js code, this works");
     $("#button_run").click(function(){
-    	// $("#summary").val("trala test " + tra);
-    	// tra ++;
     	Rtool_logic();
     });
 });
@@ -466,9 +462,6 @@ function generate_cb_sim_mean(N, cb_data) {
 
 var tac = 0;
 function Rtool_logic() {
-
-	$("#summary").val("from Rtool_logic " + tac);
-	tac ++;
 	// LOL
 	var N = Math.pow(10,3);
 	var cb_data = [];
@@ -489,13 +482,9 @@ function Rtool_logic() {
 
 		// (ECost, EBenefit, ENB, LP, VaR)
 		var result = planes_analysis(Cost, Benefit);
-		var jsonData = [{plane: 1, ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
-						{plane: 2, ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
-		loadTable('estimations_table', ['plane', 'ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
-		$("#summary").val("A --> ECost: " + result[0][0] + " EBenefit: " + result[1][0] +
-												" ENB: " + result[2][0] + " LP: " + result[3][0] + " VaR: " + result[4][0] +
-														"B --> ECost: " + result[0][1] + " EBenefit: " + result[1][1] +
-												" ENB: " + result[2][1] + " LP: " + result[3][1] + " VaR: " + result[4][1]);
+		var jsonData = [{Plane: 1, ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
+						{Plane: 2, ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
+		loadTable('estimations_table', ['Plane', 'ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
 	}
 }
 // auxiliary function to check input data
@@ -517,7 +506,7 @@ function planes_analysis(Cost, Benefit) {
 
 	// graph absent atm
 
-	return ([ECost, EBenefit, ENB, LP, VaR]);
+	return [ECost, EBenefit, ENB, LP, VaR];
 }
 // auxiliary function to compute the column mean/avg of an array of arrays
 // returns an array of means/avgs
@@ -572,8 +561,6 @@ function getVaR(NB, q) {
 }
 
 function loadTable(tableId, fields, data) {
-    //var rows = "<thead><tr><th>#</th><th>Estimated Cost</th><th>Estimated Benefit</th><th>Estimated Net Benefit</th><th>Loss Probability</th><th>Value at Risk</th></tr></thead><tbody>";
-    
     var rows = '<thead>' + '<tr>';
     $.each(fields, function(index, field){
     	rows += '<th>' + field + '' + '</td>';

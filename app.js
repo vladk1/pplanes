@@ -5,8 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var randgen = require( 'randgen' );
-var quantile = require( 'compute-quantile' );
 
 
 var app = express();

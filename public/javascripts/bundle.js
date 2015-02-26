@@ -487,6 +487,7 @@ function Rtool_logic() {
 		loadTable('estimations_table', ['Plane', 'ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
 	}
 }
+
 // auxiliary function to check input data
 function isNumber(elem, index, array) {
 	return !isNaN(parseFloat(elem));
@@ -508,6 +509,7 @@ function planes_analysis(Cost, Benefit) {
 
 	return [ECost, EBenefit, ENB, LP, VaR];
 }
+
 // auxiliary function to compute the column mean/avg of an array of arrays
 // returns an array of means/avgs
 function getMean(elems) {
@@ -549,6 +551,7 @@ function getLossProbability(elems) {
 	}
 	return n_lp;
 }
+
 function getVaR(NB, q) {
 	var quantile = require( 'compute-quantile' );
 

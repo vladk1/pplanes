@@ -142,7 +142,7 @@
 
 	
 
-
+/*
 	paper-button.blue {
 	  position: absolute;
       color: #4285f4;
@@ -158,15 +158,37 @@
       margin: 10px;
       right:100px;
       top:60px;
+    }*/
+
+    paper-button.blue {
+	  position: relative;
+      color: #4285f4;
+      width:200px;
+      margin: 10px;
+    }
+    paper-button.red {
+      position: relative;
+      color: #ff4d4d;
+      width:200px;
+      margin: 10px;
     }
 
-    #estim_box {
+
+
+    /*#estim_box {
 	  position: absolute;
       width:600px;
       margin: 10px;
-      right:160px;
+      right:60px;
       top:100px;
-	}
+	}*/
+	#estim_box {
+		float: right;
+		margin: 10px;
+		margin-top: 10px;
+		width:calc(100% / 2);
+		display:inline-block;
+    }
 
 	.estim_plane {
 	  position: relative;
@@ -174,7 +196,7 @@
       margin: 10px;
 	}
 	paper-input.estim_plane {
-	  width: 100px;
+	  width: 130px;
 	  margin: 5px;
 	}
 
@@ -190,6 +212,26 @@
 		/*text-align: center;*/
 		
 	}
+
+
+		paper-radio-group.blue paper-radio-button::shadow #ink[checked] {
+	      /*color: #4285f4;*/
+	      color: #FFFFFF;
+	    }
+	    
+	    paper-radio-group.blue paper-radio-button::shadow #onRadio {
+	      background-color: #4285f4;
+	    }
+
+	    paper-radio-group.blue paper-radio-button[checked]::shadow #offRadio {
+	      border-color: #4285f4;
+	    }
+	    
+	    paper-radio-button {
+	      /*display: block;*/
+	      display:inline-block;
+	    }
+
 
 
 

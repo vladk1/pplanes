@@ -4,6 +4,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
 
 <style type="text/css">
 
@@ -29,10 +30,17 @@
 	.header_font {
 		color: #000000;
 		font-size: 20px;
-		margin: 10px;
+		margin: 20px;
 		opacity: 0.87;
 		/*text-align: center;*/
-		
+	}
+
+	.question_font {
+		color: #4F7DC9;
+		font-size: 20px;
+		margin: 20px;
+		opacity: 0.87;
+		/*text-align: center;*/	
 	}
 
 </style>
@@ -42,18 +50,133 @@
 
 </head>
 
+
+
+
 <body>
 
 	<div class="header_font">
+	
 		<p> 
-			The website gives users an opportunity to experience the use of the R tool. By given a scenario of making paper planes, users follow the steps on the website which inputs estimation of different attributes. As result, the system will automatically return a graph that analysis the project portfolios. By looking at the result, users should be able to determine which portfolio is better under uncertainty.
+			• The website gives users an opportunity to experience the use of cost-benefit analysis to perform decisions under uncertaity. By given a scenario of making paper planes, users follow the steps on the website which inputs estimation of different attributes. As result, the system will automatically return a graph that analysis the project portfolios. By looking at the result, users should be able to determine which portfolio is better under uncertainty.
 		</p>
 
 		<p> 
-			Hopefully, users can have better understanding of making decision under uncertainty and how useful the R tool is.
+			• Hopefully, users can have better understanding of making decision under uncertainty and how useful to use this technique during decision-making process.
+		</p>
+
+		<p> 
+			• Please, fill up the following questions, to estimate your current knowledge of the topic:
 		</p>
 
 	</div>
+
+	<div class="question_font"> Which of the following best defines 95% confidence interval(Bayesian)? </div>
+	    <paper-radio-group id="plane_selection" selected="the_basic_dart">
+	      <paper-radio-button name="i11" 
+	      label="the average equals the mean of the interval 95% of times (1)">
+	      </paper-radio-button>
+
+	      <paper-radio-button name="i12" 
+	      label="means that with a large number of repeated samples, 95% of such calculated confidence intervals would include the true value of the parameter (2)">
+	      </paper-radio-button>
+
+    	  <paper-radio-button name="i13" 
+    	  label="it is used to capture uncertainty (3)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i14" 
+    	  label="(Given our observed data) there is a 95% probability that the true value of the variable falls within the credible region (5)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i16" 
+    	  label="no idea (0)">
+    	  </paper-radio-button>
+	    </paper-radio-group>
+
+
+	    <div class="question_font"> Which of the following best defines ENB? </div>
+	    <paper-radio-group id="plane_selection" selected="the_basic_dart">
+	      <paper-radio-button name="i21" 
+	      label="is benefit (1)">
+	      </paper-radio-button>
+
+	      <paper-radio-button name="i12" 
+	      label="is estimated benefit (2)">
+	      </paper-radio-button>
+
+    	  <paper-radio-button name="i13" 
+    	  label="is benefit - cost (3)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i14" 
+    	  label="is how much it is estimated to earn (4)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i15" 
+    	  label="is estimated benefit - estimated cost (5)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i16" 
+    	  label="no idea (0)">
+    	  </paper-radio-button>
+	    </paper-radio-group>
+
+
+	    <div class="question_font"> Which of the following best defines VaR? </div>
+	    <paper-radio-group id="plane_selection" selected="the_basic_dart">
+	      <paper-radio-button name="i31" 
+	      label="value earned by the fact the asset is at risk (1)">
+	      </paper-radio-button>
+
+	      <paper-radio-button name="i32" 
+	      label="risk loss (2)">
+	      </paper-radio-button>
+
+    	  <paper-radio-button name="i13" 
+    	  label="risk measure (3)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i14" 
+    	  label="risk measure of the risk loss (4)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i15" 
+    	  label="risk measure of the risk loss in a specific portfolio (5)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i16" 
+    	  label="no idea (0)">
+    	  </paper-radio-button>
+	    </paper-radio-group>
+
+
+	    <div class="question_font"> Which of the following best defines Monte Carlo Simulation? </div>
+	    <paper-radio-group id="plane_selection" selected="the_basic_dart">
+	      <paper-radio-button name="i31" 
+	      label="is a simulation (1)">
+	      </paper-radio-button>
+
+	      <paper-radio-button name="i32" 
+	      label="is a simulation of free variables (2)">
+	      </paper-radio-button>
+
+    	  <paper-radio-button name="i13" 
+    	  label="samples different values to variables (3)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i14" 
+    	  label="samples different values to variables in their domain (4)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i15" 
+    	  label="samples the variables in the domain given (5)">
+    	  </paper-radio-button>
+
+    	   <paper-radio-button name="i16" 
+    	  label="no idea (0)">
+    	  </paper-radio-button>
+	    </paper-radio-group>
 
 </body>
 

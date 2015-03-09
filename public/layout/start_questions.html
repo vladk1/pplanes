@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<link rel="import" href="/bower_components/paper-button/paper-button.html">
+	
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300,100' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/material_design.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/material_font.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/material_colour.css">
+
+	<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+
+	<script src="/javascripts/titles.js"></script>
+
+<style type="text/css">
+
+
+</style>
+
+
+</head>
+
+
+
+
+<body>
+
+	<header class="white_font">
+
+		<section>
+
+			<div id="header_title_1" class="page-header-title"></div>
+			
+		</section>	
+
+	</header>
+
+
+	<div id="content">
+
+		<section>
+
+			<div class="main-text-header">
+				Answer questions to approximate your initial knowledge of the topic:
+			</div>
+		
+			<div class="main-text">
+
+				<p>
+					<div class="main-text-question">
+						We can represent uncertainty using an interval.
+					</div>
+				    <paper-radio-group id="q1" selected="the_basic_dart">
+				      <paper-radio-button name="i11" 
+				      label="True">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="i12" 
+				      label="False">
+				      </paper-radio-button>
+
+				    </paper-radio-group>
+				</p>
+
+				<p>
+				    <div class="main-text-question">
+						It is better to use a number to represent uncertainty instead of an interval.
+					</div>
+				    <paper-radio-group id="q2" selected="the_basic_dart">
+				      <paper-radio-button name="i21" 
+				      label="True">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="i12" 
+				      label="False">
+				      </paper-radio-button>
+				    </paper-radio-group>
+			    </p>
+
+				<p>
+				    <div class="main-text-question">
+						The expected cost is equal to the mean of the of the estimation interval boundaries when using Monte Carlo simulation.
+					</div>
+				    <paper-radio-group id="q3" selected="the_basic_dart">
+				      <paper-radio-button name="i21" 
+				      label="True">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="i12" 
+				      label="False">
+				      </paper-radio-button>
+				    </paper-radio-group>
+			    </p>
+
+			    <p>
+				    <div class="main-text-question">
+						The 95% Confidence Interval limits the variable to take values within the boundaries of the interval.
+					</div>
+				    <paper-radio-group id="q4" selected="the_basic_dart">
+				      <paper-radio-button name="i21" 
+				      label="True">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="i12" 
+				      label="False">
+				      </paper-radio-button>
+				    </paper-radio-group>
+				</p>
+
+				<p>
+				    <div class="main-text-question">
+						The Monte Carlo simulation samples the variable within the boundaries of the interval given. 
+					</div>
+				    <paper-radio-group id="q5" selected="the_basic_dart">
+				      <paper-radio-button name="i21" 
+				      label="True">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="i12" 
+				      label="False">
+				      </paper-radio-button>
+				    </paper-radio-group>
+				</p>
+
+				<p>
+				    <div class="main-text-question">
+						The value at risk is the value the asset gains when it is at risk. 
+					</div>
+				    <paper-radio-group id="q6" selected="the_basic_dart">
+				      <paper-radio-button name="i21" 
+				      label="True">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="i12" 
+				      label="False">
+				      </paper-radio-button>
+				    </paper-radio-group>
+				</p>
+
+				<p>
+				    <div class="main-text-question">
+						Expected Net Benefit is the final value of expected earning.  
+					</div>
+				    <paper-radio-group id="q7" selected="the_basic_dart">
+				      <paper-radio-button name="i21" 
+				      label="True">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="i12" 
+				      label="False">
+				      </paper-radio-button>
+				    </paper-radio-group>
+				</p>
+
+			</div>
+
+		</section>
+
+	</div>
+
+
+	<footer>
+
+
+		<div class="previous_button left"> 
+			<a id="footer_back_link_1" href="/">
+				<paper-button>
+					
+					<img height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-left_24x24px.svg"/>
+					<div class="footer-text" id="footer_back_1"></div>
+					
+				</paper-button>
+			</a>
+		</div>
+
+
+		<div class="next_button right"> 
+			<a id="footer_next_link_1" href="/planes">
+				<paper-button onclick="isAnswered()">
+					
+					<div class="footer-text" id="footer_next_1"></div>
+					<img height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
+					
+				</paper-button>
+			</a>
+		</div>
+	
+
+	</footer>
+
+
+</body>
+
+</html>

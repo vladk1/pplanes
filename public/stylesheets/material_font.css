@@ -1,0 +1,79 @@
+	.page-header-title {
+		color: #fff;
+		font-size: 56px;
+		font-weight: 400;
+		line-height: 1.5;
+		margin: 0 auto;
+		overflow: hidden;
+		width: 1160px;
+		white-space: nowrap;
+	}
+
+	.page-header-sub-title {
+		color: #fff;
+		font-size: 36px;
+		font-weight: 400;
+		line-height: 1.5;
+		margin: 0 auto;
+		overflow: hidden;
+		width: 1160px;
+		white-space: nowrap;
+	}
+
+	.main-text-header {
+		font-size: 30px;
+		line-height: 32px;
+		/*color: #1976D2;*/
+		color: #1976D2;
+		padding-bottom: 10px;
+	}
+
+	.main-text-question{
+		font-size: 20px;
+		line-height: 25px;
+		color: #212121;
+	}
+
+	.main-text {
+		font-size: 20px;
+		line-height: 32px;
+		color: #212121;
+		padding-right: 40px;
+		padding-left: 40px;
+	}
+
+	paper-radio-button {
+		color: #727272;
+	}
+
+	.footer-header-right {
+		/*font-family: 'Roboto';
+		line-height: 32px;
+		font-size: 15px;
+		color: #ececec;*/
+		margin-left: 30px;
+		/*text-align: center;	*/
+	}
+	.footer-header-left {
+		/*line-height: 32px;
+		font-family: 'Roboto';
+		font-size: 15px;
+		color: #ececec;*/
+		margin-right: 30px;
+		/*text-align: center;	
+		white-space: nowrap;*/
+	}
+
+
+	.footer-text {
+		font-size: 25px;
+		line-height: 24px;
+		display: block;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.highlight {
+		color: #536DFE;
+		 font-weight: bold;
+	}

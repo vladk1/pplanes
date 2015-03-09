@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'> -->
+	<link rel="import" href="/bower_components/polymer/polymer.html">
+	<link rel="import" href="/bower_components/paper-button/paper-button.html">
+	<link rel="import" href="/bower_components/paper-input/paper-input.html">
+	<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+
+
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_design.css">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_font.css">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_colour.css">
+
+	 <link href='http://fonts.googleapis.com/css?family=Roboto:300,100' rel='stylesheet' type='text/css'>
+
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+	<script src="/javascripts/titles.js"></script>
+
+	<script type="text/javascript" src="/javascripts/stop_watch.js"></script>
+
+<head>
+	<title></title>
+	
+		<style>
+			body {
+		      font-family: 'Roboto';
+		      margin: 0;
+		    }
+			canvas {
+    			background: #FFFFFF;
+    			margin: 0px;
+    			margin-top: 10px;
+			}
+
+			
+
+			#text_min {
+				visibility: hidden;
+			}
+			#final_score {
+				font-size: 35px;
+				font-family: 'Roboto';
+				margin-left: 10px;
+			}
+
+			.text {
+				position: relative;
+				display: inline-block;
+				font-family: 'Roboto';
+				color: #4F7DC9;
+				font-size: 30px;
+				margin: 10px;
+				
+			}
+			#text_sec {
+				margin-right: 25px;
+			}
+
+
+			#d1, #d2, #d3  {
+				position: relative;
+				display: inline-block;
+			}
+			#d3 {
+				margin-left: 20px;
+			}
+
+			
+
+			.instraction_container {
+			    display:inline-block;
+			    float: left;
+			    width:calc(100%/1.5);
+			    margin-top: 20px;
+
+
+
+			    font-size: 20px;
+				line-height: 32px;
+				color: #212121;
+			    /*display:inline-block;*/
+			}
+
+				.instraction_container p {
+					margin-left: 70px;
+				}
+
+				#start_button, #stop_button {
+					display:inline-block;
+					margin: 10px;
+				}
+				#buttons_container {
+					margin-top: 40px;
+					margin-bottom: 40px;
+					margin-left: auto;
+    				margin-right: auto;
+    				width: 50%;
+				}
+
+				#timer_container {
+					margin-left: auto;
+    				margin-right: auto;
+    				width: 100%;
+				}
+
+				
+
+				.main-text {
+					float: left;
+			    	margin: 20px;
+			    	/*width:calc(100%/3.5);*/
+			    	padding:10px;
+			    	display:inline-block;
+				}
+
+
+		</style>
+
+<script type="text/javascript">
+
+			function saveTime(current, dec_current, min_current) {
+				var scoreSeconds = current+dec_current*10+min_current*60;
+				localStorage.setItem("build_time", scoreSeconds);
+				console.log("build_time="+scoreSeconds);
+			}
+
+		
+			// function calculateResults() {
+			// 	console.log("calculateResults");
+			// 	// $('<p>Text</p>').appendTo('#final_score');
+			// 	var scoreSeconds = current+dec_current*10+min_current*60;
+
+
+			// 	var minTime1 = localStorage.getItem("min_time_1");
+			// 	var maxTime1 = localStorage.getItem("max_time_1");
+			// 	var minDist1 = localStorage.getItem("min_dist_1");
+			// 	var maxDist1 = localStorage.getItem("max_dist_1");
+
+			// 	var minTime2 = localStorage.getItem("min_time_2");
+			// 	var maxTime2 = localStorage.getItem("max_time_2");
+			// 	var minDist2 = localStorage.getItem("min_dist_2");
+			// 	var maxDist2 = localStorage.getItem("max_dist_2");
+
+
+			// 	var planeType = localStorage.getItem("plane_type");
+			// 	var planeDist = document.getElementById('plane_dist').value;
+
+			// 	console.log(minTime1+maxTime1+minDist1+maxDist1+minTime2+maxTime2+minDist2+maxDist2+planeType);
+
+			// 	// var estim = localStorage.getItem("min_time_1") + localStorage.getItem("max_time_1");
+
+			// 	// FinalBenefit*C1 - abs(FinalCost -CostMean) * C2 - abs(FinalBenefit - BenefitMean)*C3 - FinalCost*C4
+			// 	// FinalBenefit*50 - abs(FinalCost -CostMean) * 0.5 - abs(FinalBenefit - BenefitMean)*0.5 - FinalCost*1
+			// 	var finalBenefit = 0;
+			// 	if (planeType === "the_basic_dart") {
+			// 		finalBenefit = 100;
+			// 	} else {
+			// 		finalBenefit = 300;
+			// 	}
+
+			// 	var score = finalBenefit + 20*planeDist - scoreSeconds;
+				
+			// 	$("#final_score").text(score + " points");
+
+				
+			// 	$("#result_container").removeClass("core-header");
+			// 	// remove a class
+			// 	$("#result_container").addClass("core-red-header");
+				
+			// }
+		
+		</script>
+
+</head>
+<body>
+	
+	<div id="wrap">
+
+		<header class="white_font">
+
+			<section>
+
+				<div class="page-header-title" id="header_title_8"></div>
+				
+			</section>	
+
+		</header>
+
+
+		<div id="content">
+
+			<section>
+				
+
+				<div class="main-text">
+			    	
+		    		<img width="200px" src="/images/the_basic_dart_instr.jpg" alt="The Basic Dart"/>
+			  	
+			    </div>
+
+
+				<div class="instraction_container">
+
+					<div class="main-text-header">
+						Plane building instructions:
+					</div>
+
+					<p>
+						1) Follow instructions to build a plane of the chose type.
+					</p>
+
+					<p>
+						2) Press <span class="highlight">'Start'</span> button below when ready to start.
+					</p>
+
+					<p>
+						3) Press <span class="highlight">'Stop'</span> as soon as you will finish building plane.
+					</p>
+					
+					<div id="buttons_container">
+				    	<paper-button raised id="start_button" onclick="startWatchClick()" class="blue">Start</paper-button>
+						<paper-button raised id="stop_button" onclick="stopWatchClick()" class="red">Stop</paper-button>
+				    </div>
+
+				    <div id="timer_container">
+
+						<div id='d3'>
+					        <canvas id="min_canvas" width="160" height="200">
+					            Your browser does not support HTML5 Canvas.
+					        </canvas>
+					    </div>
+
+					    <div id="text_min" class='text'>  
+					        min
+					    </div>
+				    	<div id='d2'>
+					        <canvas id="dec_seconds_canvas" width="160" height="200">
+					            Your browser does not support HTML5 Canvas.
+					        </canvas>
+					    </div>
+				    	<div id='d1'>  
+					        <canvas id="seconds_canvas" width="160" height="200">
+					             Your browser does not support HTML5 Canvas.
+					        </canvas>
+					    </div>
+					    <div id="text_sec" class='text'>  
+					        sec
+					    </div>
+
+					</div>
+
+				    
+
+				</div>
+
+
+				</div>
+
+			
+			</section>
+
+		</div>	
+
+
+</div>
+
+
+	<footer>
+
+
+		<div class="previous_button left"> 
+			<a id="footer_back_link_8" href="/">
+				<paper-button>
+					
+					<img class="footer-header-left" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-left_24x24px.svg"/>
+
+					<div class="footer-text" id="footer_back_8"></div>
+					
+				</paper-button>
+			</a>
+		</div>
+
+
+		<div class="next_button right"> 
+			<a id="footer_next_link_8" href="/">
+				<paper-button>
+					
+					<div class="footer-text" id="footer_next_8"></div>
+					
+					<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
+					
+				</paper-button>
+			</a>
+		</div>
+	
+
+	</footer>
+
+
+
+	<script type="text/javascript">
+			
+			// var canvas = document.getElementById('canvas');
+			var secondsCanvas = document.getElementById('seconds_canvas');
+			var dec_secondsCanvas = document.getElementById('dec_seconds_canvas');
+			var minCanvas = document.getElementById('min_canvas');
+
+			var decTimeOut;
+
+			var secCtx = secondsCanvas.getContext('2d');
+			secCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
+			secCtx.lineWidth = 5;
+
+			var dec_secCtx = dec_secondsCanvas.getContext('2d');
+			dec_secCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
+			dec_secCtx.lineWidth = 5;
+
+			var minCtx = minCanvas.getContext('2d');
+			minCtx.strokeStyle = '#4F7DC9'; //#4F7DC9
+			minCtx.lineWidth = 5;
+
+
+			var stopWatch = 0;
+
+
+			function startWatchClick() {
+				// Start the animation.
+				setTimeout(nextFrame, 100);
+				stopWatch = 0;
+			}
+
+			function stopWatchClick() {
+				// Start the animation.
+				stopWatch = 1;
+				saveTime(current, dec_current, min_current);
+				
+			}
+
+
+			function allDone() {
+				// Start the animation.
+				// stopWatch = 1;
+				calculateResults(current, dec_current, min_current);
+				
+			}
+
+		</script>
+
+
+	
+</body>
+</html>

@@ -1,238 +1,176 @@
- body {
+ 	html, body {
       font-family: 'Roboto';
       margin: 0;
+      height: 100%;
+      min-height: 100%;
     }
     
     section {
-      padding: 40px;
-      min-height: 300px;
+      padding: 35px;
+      padding-right: 80px;
+      padding-left: 80px;
+      
     }
 
-
-	
-
-	h1 {
-		background-color: black;
-		color: white;
-		height: 40px;
-		font-size: 24px;
-		font-weight: normal;
-		left: 0;
-		line-height: 40px;
-		position: fixed;
-		text-align: center;
-		top: 0;
+	/*footer {
 		width: 100%;
-		z-index: 1;
-	}
-	h1 a {
-		border-bottom: 1px solid white;
-		color: white;
-		display: inline-block;
-		line-height: 30px;
-		text-decoration: none;
-	}
-	.photo {
-		background-attachment: fixed;
-		background-position: 50% 0;
-		background-repeat: no-repeat;
-		height: 750px;
-		max-width:100%; 
-		max-height:100%;
+	    background: #679df6;
+	    height: 56px;
+	}*/
+
+
+	footer {
 		position: relative;
-	}
-	
-	.photo span {
-		bottom: 0;
-		color: white;
-		display: block;
-		left: 50%;
-		margin-left: -640px;
-		font-size: 38px;
-		padding: 10px;
-		position: absolute;
-		text-shadow: 0 2px 0 black, 0 0 10px black;
-		width: 1280px;
-	}
+   		margin-top: -56px; /* negative value of footer height */
+    	height: 56px;
+    	background: #679df6;
+    	clear:both;
+    }
 
-
+    #wrap {
+    	min-height: 100%;
+    }
 	
 
-	.firstslide_title {
-		width: 700px ;
-		margin-left: auto ;
-		margin-right: auto ;
-		text-align: center ;		
-		color: white;
-		font-size: 38px;
-		text-shadow: 0 1px 0 black, 0 0 1px black;
-		padding-top: 30px;
+/*footer {
+	 position:absolute;
+   bottom:0;
+   width: 100%;
+		clear: both;
+	    position: relative;
+	    background: #679df6;
+	    z-index: 10;
+	    height: 56px;
+
+}*/
+
+	header {
+		/*background: #4285f4;*/ 
+		background: #2196F3;
+		margin: 0;
 	}
 
-	core-header-panel {
-      float: left;
-      width: 100%;
-      height: 100%;
-    }
-    
-    core-header-panel[mode=cover]::shadow #mainContainer {
-      left: 70px;
+	#content {
+		background: #FFFFFF;
+		overflow:auto;
+    	padding-bottom: 57px;
+	}
+
+
+    .brand_colour {
+    	color: #4285f4;
     }
 
-    .core-red-header {
-      height: 60px;
-      line-height: 60px;
-      font-size: 30px;
-      padding: 10px 30px;
-      background-color: #ff4d4d;
-      color: #FFF;
-      transition: height 0.2s;
+    .white_font {
+    	color: #FFFFFF;
+    	
     }
 
-    .core-header {
-      height: 60px;
-      line-height: 60px;
-      font-size: 30px;
-      padding: 10px 30px;
-      background-color: #4F7DC9;
-      color: #FFF;
-      transition: height 0.2s;
-    }
-    
-    .core-header.tall {
-      height: 180px;
-    }
-    
-    .core-header.medium-tall {
-      height: 120px;
+
+    .next_button {
+		/*display: block;*/
+		display:inline-block
+		width: calc(100% / 1.5);
+		height: 100%;
+		color: #FFFFFF;
+		line-height: 10px; 
+		text-align: center;
+	}
+
+	.previous_button {
+		/*display: block;*/
+		display:inline-block
+		width: calc(100% / 1.5);
+		height: 100%;
+		color: #FFFFFF;
+		line-height: 10px; 
+		text-align: center;
+	}
+
+
+
+	.left {
+	  float: left;
+	}
+
+	.right {
+	  float: right;
+	}
+
+	img {
+		margin: 5px;
+	}	
+
+	 a:link {color: #FFFFFF;}      /* unvisited link */
+  	 a:visited {color: #FFFFFF;}   /* visited link */
+     a:hover {color: #FFFFFF;}     /* mouse over link */
+   	 a:active {color: #FFFFFF;}    /* selected link */
+
+
+
+    paper-button.blue {
+      display:block;
+	    position: relative;
+      color: #4285f4;
+      width: 150px;
+      margin: 10px auto;
+      text-align: center; 
+      font-size: 15px;
+      line-height: 20px; 
     }
 
-    .content {
-	  max-width:100%; 
-	  max-height:100%;
+    paper-button.red {
+      display:block;
+      position: relative;
+      color: #ff4d4d;
+      width: 150px;
+      margin: 10px auto;
+      text-align: center; 
+      font-size: 15px;
+      line-height: 20px; 
     }
+
 
 
    
-
-	/* iframe itself */
-	/*iframe {
-	    display: block;
-	    width: 100%;
-	    height: 100%;
-	    border: none;
-	}*/
-
-	
-	.embed-container {
-	    border: 1px solid black;
-		padding: 1px 1px 1px 1px;
-		width: auto;
-		float: left;
-	}
-				
-	.embed-container iframe {
-	    width: 100%;
-	    height: 100%;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    border: none;
-	}
-
-	
-
-/*
-	paper-button.blue {
-	  position: absolute;
-      color: #4285f4;
-      width:200px;
-      margin: 10px;
-      right:100px;
-      top:10px;
-    }
-    paper-button.red {
-      position: absolute;
-      color: #ff4d4d;
-      width:200px;
-      margin: 10px;
-      right:100px;
-      top:60px;
-    }*/
-
-    paper-button.blue {
-	  position: relative;
-      color: #4285f4;
-      width:200px;
-      margin: 10px;
-    }
-    paper-button.red {
-      position: relative;
-      color: #ff4d4d;
-      width:200px;
-      margin: 10px;
-    }
-
-
-
-    /*#estim_box {
-	  position: absolute;
-      width:600px;
-      margin: 10px;
-      right:60px;
-      top:100px;
-	}*/
-	#estim_box {
+	/*#estim_box {
 		float: right;
 		margin: 10px;
 		margin-top: 10px;
 		width:calc(100% / 2);
 		display:inline-block;
-    }
+    }*/
 
 	.estim_plane {
 	  position: relative;
       float: left;
-      margin: 10px;
-	}
-	paper-input.estim_plane {
-	  width: 130px;
-	  margin: 5px;
-	}
+    }
 
-	.plane_block {
-		display: inline-block;
-	}
-
-	.header_font {
-		color: #4F7DC9;
-		font-size: 20px;
-		margin: 10px;
-		opacity: 0.87;
-		/*text-align: center;*/
-		
+	paper-input {
+	  width: calc(100% / 5);
+	  margin-left: 10px;
+	  margin-right: 10px;
+	  margin-bottom: 10px;
 	}
 
 
-		paper-radio-group.blue paper-radio-button::shadow #ink[checked] {
-	      /*color: #4285f4;*/
-	      color: #FFFFFF;
-	    }
-	    
-	    paper-radio-group.blue paper-radio-button::shadow #onRadio {
-	      background-color: #4285f4;
-	    }
+	paper-radio-group.blue paper-radio-button::shadow #ink[checked] {
+      /*color: #4285f4;*/
+      color: #FFFFFF;
+    }
+    
+    paper-radio-group.blue paper-radio-button::shadow #onRadio {
+      background-color: #4285f4;
+    }
 
-	    paper-radio-group.blue paper-radio-button[checked]::shadow #offRadio {
-	      border-color: #4285f4;
-	    }
-	    
-	    paper-radio-button {
-	      /*display: block;*/
-	      display:inline-block;
-	    }
-
-
+    paper-radio-group.blue paper-radio-button[checked]::shadow #offRadio {
+      border-color: #4285f4;
+    }
+    
+    paper-radio-button {
+      /*display: block;*/
+      display:inline-block;
+    }
 
 
     paper-button[raised].blue {

@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    $("#go_to_estim").click(function(){
+    window.onload = function() {
     	Rtool_logic();
-    });
+    };
 });
 
 
@@ -48,15 +48,25 @@ function Rtool_logic() {
 	// LOL
 	var N = Math.pow(10,3);
 	var cb_data = [];
-	cb_data[0] = document.getElementById('min_time_1').value;
-	cb_data[1] = document.getElementById('max_time_1').value;
-	cb_data[2] = document.getElementById('min_dist_1').value;
-	cb_data[3] = document.getElementById('max_dist_1').value;
+	// cb_data[0] = document.getElementById('min_time_1').value;
+	// cb_data[1] = document.getElementById('max_time_1').value;
+	// cb_data[2] = document.getElementById('min_dist_1').value;
+	// cb_data[3] = document.getElementById('max_dist_1').value;
 
-	cb_data[4] = document.getElementById('min_time_2').value;
-	cb_data[5] = document.getElementById('max_time_2').value;
-	cb_data[6] = document.getElementById('min_dist_2').value;
-	cb_data[7] = document.getElementById('max_dist_2').value;
+	// cb_data[4] = document.getElementById('min_time_2').value;
+	// cb_data[5] = document.getElementById('max_time_2').value;
+	// cb_data[6] = document.getElementById('min_dist_2').value;
+	// cb_data[7] = document.getElementById('max_dist_2').value;
+
+	cb_data[0] = localStorage.getItem("min_time_1");
+	cb_data[1] = localStorage.getItem("max_time_1");
+	cb_data[2] = localStorage.getItem("min_dist_1");
+	cb_data[3] = localStorage.getItem("max_dist_1");
+
+	cb_data[4] = localStorage.getItem("min_time_2");
+	cb_data[5] = localStorage.getItem("max_time_2");
+	cb_data[6] = localStorage.getItem("min_dist_2");
+	cb_data[7] = localStorage.getItem("max_dist_2");
 
 	if (cb_data.every(isNumber)) {
 		var sim = generate_cb_sim_mean(N, cb_data);

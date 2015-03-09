@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'> -->
+	<link rel="import" href="/bower_components/polymer/polymer.html">
+	<link rel="import" href="/bower_components/paper-button/paper-button.html">
+	<link rel="import" href="/bower_components/paper-input/paper-input.html">
+	<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+
+
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_design.css">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_font.css">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_colour.css">
+
+	 <link href='http://fonts.googleapis.com/css?family=Roboto:300,100' rel='stylesheet' type='text/css'>
+
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+	<script src="/javascripts/titles.js"></script>
+
+<head>
+	<title></title>
+
+</head>
+<body>
+	
+	<div id="wrap">
+
+		<header class="white_font">
+
+			<section>
+
+				<div class="page-header-title" id="header_title_4"></div>
+				
+			</section>	
+
+		</header>
+
+
+		<div id="content">
+
+			<section>
+				<div class="main-text-header">
+					Predict your time to build plane and distance it will fly:
+				</div>
+				<div class="main-text">
+					
+				
+					<div> "The Basic Dart": </div>
+					<paper-input id="min_dist_1" class="estim_plane" label="min distance (m)" floatingLabel> </paper-input>
+					<paper-input id="max_dist_1" class="estim_plane" label="max distance (m)" floatingLabel></paper-input>
+					
+					<paper-input id="min_time_1" class="estim_plane" label="min time (s)" floatingLabel></paper-input>
+					<paper-input id="max_time_1"  label="max time (s)" floatingLabel></paper-input>
+					
+					<div> "The Stable": </div>
+					<paper-input id="min_dist_2" class="estim_plane"  label="min distance (m)" floatingLabel></paper-input>
+					<paper-input id="max_dist_2" class="estim_plane"  label="max distance (m)" floatingLabel></paper-input>
+					
+					<paper-input id="min_time_2" class="estim_plane" label="min time (s)" floatingLabel></paper-input>
+					<paper-input id="max_time_2" class="estim_plane"  label="max time (s)" floatingLabel></paper-input>
+				
+				</div>
+			
+			</section>
+
+		</div>	
+
+
+</div>
+
+
+	<footer>
+
+
+		<div class="previous_button left"> 
+			<a href="/uncertainty">
+				<paper-button>
+					
+					<img class="footer-header-left" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-left_24x24px.svg"/>
+
+					<div class="footer-text" id="footer_back_4"></div>
+					
+				</paper-button>
+			</a>
+		</div>
+
+
+		<div class="next_button right"> 
+			<a href="/analysis">
+				<paper-button onclick="saveApproximations()">
+					
+					<div class="footer-text" id="footer_next_4"></div>
+					
+					<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
+					
+				</paper-button>
+			</a>
+		</div>
+	
+
+	</footer>
+
+	<script type="text/javascript">
+
+		function saveApproximations() {
+			localStorage.setItem("min_time_1", document.getElementById('min_time_1').value);
+			localStorage.setItem("max_time_1", document.getElementById('max_time_1').value);
+			localStorage.setItem("min_dist_1", document.getElementById('min_dist_1').value);
+			localStorage.setItem("max_dist_1", document.getElementById('max_dist_1').value);
+
+			localStorage.setItem("min_time_2", document.getElementById('min_time_2').value);
+			localStorage.setItem("max_time_2", document.getElementById('max_time_2').value);
+			localStorage.setItem("min_dist_2", document.getElementById('min_dist_2').value);
+			localStorage.setItem("max_dist_2", document.getElementById('max_dist_2').value);
+		}
+		
+	</script>
+	
+</body>
+</html>
+

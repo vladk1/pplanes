@@ -24,8 +24,41 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/', routes);
 // app.use('/users', users);
 app.get('/', function(req,res){
-    res.sendfile('./public/layout/index.html');
+    res.sendfile('./public/layout/home.html');
 });
+app.get('/start_questions', function(req,res){
+    res.sendfile('./public/layout/start_questions.html');
+});
+app.get('/planes', function(req,res){
+    res.sendfile('./public/layout/paper_planes_instr.html');
+});
+app.get('/uncertainty', function(req,res){
+    res.sendfile('./public/layout/uncertainty_theory.html');
+});
+app.get('/approximation', function(req,res){
+    res.sendfile('./public/layout/uncertainty_approximation.html');
+});
+app.get('/analysis', function(req,res){
+    res.sendfile('./public/layout/monte_carlo_method.html');
+});
+app.get('/results', function(req,res){
+    res.sendfile('./public/layout/results.html');
+});
+app.get('/choose_plane', function(req,res){
+    res.sendfile('./public/layout/choose_plane.html');
+});
+app.get('/game_build_plane', function(req,res){
+    res.sendfile('./public/layout/game_build_plane.html');
+});
+
+app.get('/flight_distance', function(req,res){
+    res.sendfile('./public/layout/flight_distance.html');
+});
+app.get('/score', function(req,res){
+    res.sendfile('./public/layout/score.html');
+});
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

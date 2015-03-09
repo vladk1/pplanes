@@ -1,11 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	
-	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<!-- <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'> -->
+	<link rel="import" href="/bower_components/polymer/polymer.html">
+	<link rel="import" href="/bower_components/paper-button/paper-button.html">
 
-<style type="text/css">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_design.css">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_font.css">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_colour.css">
+
+	 <link href='http://fonts.googleapis.com/css?family=Roboto:300,100' rel='stylesheet' type='text/css'>
+
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+	<script src="/javascripts/titles.js"></script>
+
+<head>
+	<title></title>
+	<style type="text/css">
 
 	body {
 		font-family: 'Roboto';
@@ -32,31 +44,125 @@
 		text-align: center;
 	}
 
+	.main-text {
+		float: left;
+    	margin: 10px;
+    	width:calc(100% / 2);
+    	display:inline-block;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
 </style>
-
-	
 </head>
-
 <body>
+	
+<div id="wrap">
+	<header class="white_font">
 
-	<div class="instraction_container">
-		<div class="floated_img">
-	  		<img width="200px" src="/images/the_basic_dart_instr.jpg" alt="The Basic Dart"/>
-	  		<div class="header_font">£100</div>
-	    </div>
+		<section>
 
-	    <!-- <div class="floated_img">
-	  		<img width="200px" src="/images/the_glider_instr.jpg" alt="The Glider"/>
-	  		<div class="header_font">£200</div>
-	    </div> -->
+			<div id="header_title_2" class="page-header-title"></div>
+			
+		</section>	
 
-	    <div class="floated_img"> 
-	  		<img width="200px" src="/images/the_stable_instr.jpg" alt="The Stable"/>
-	  		<div class="header_font">£300</div>
-	    </div>
+	</header>
 
+
+	<div id="content">
+
+		<section>
+			<div class="main-text-header">
+				Rules of the game
+			</div>
+			<div class="main-text">
+				<p>
+					The main objective of the game is to give example of application for decision-making process advantages through
+					the game of constructing paper planes.
+				</p>
+
+				<p>
+					1) There are two types of planes you can build: <span class="highlight">"The Basic Dart"</span> will give a benefit of <span class="highlight">100</span> points per meter and  <span class="highlight">"The Stable"</span> has <span class="highlight">300</span> points per meter.
+					You can see main design difference on the picture ->
+				</p>
+
+				<p>
+					2) To improve your decision read brief introduction to uncertainty estimation process:
+					<paper-button raised class="blue">
+					<a href="/uncertainty">
+						Uncertainty Estimation
+					</a>
+					</paper-button>
+				</p>
+
+				<p>
+					3) Choose <span class="highlight">one type</span> of the plane which will give the best benefit in terms of flight distance and the least amount of cost in terms of time it will take to produce.
+				</p>
+				
+				<p>
+					4) Build the plane and measure your building time.
+				</p>
+
+				<p>
+					5) Throw a plane and measure flying distance to get overall score. 
+				</p>
+
+			</div>
+
+			<div class="instraction_container">
+				<div class="floated_img">
+			  		<img width="200px" src="/images/the_basic_dart_instr.jpg" alt="The Basic Dart"/>
+			  		<div class="header_font">£100</div>
+			    </div>
+
+
+			    <div class="floated_img"> 
+			  		<img width="200px" src="/images/the_stable_instr.jpg" alt="The Stable"/>
+			  		<div class="header_font">£300</div>
+			    </div>
+			</div>
+
+		</section>	
 	</div>
+
+</div>	
+
+
+
+	<footer>
+
+
+		<div class="previous_button left"> 
+			<a href="/">
+				<paper-button>
+					
+					<img class="footer-header-left" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-left_24x24px.svg"/>
+
+					<div class="footer-text" id="footer_back_2"></div>
+					
+				</paper-button>
+			</a>
+		</div>
+
+
+		<div class="next_button right"> 
+			<a href="/uncertainty">
+				<paper-button>
+					
+					<div class="footer-text" id="footer_next_2"></div>
+					
+					<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
+					
+				</paper-button>
+			</a>
+		</div>
+	
+
+	</footer>
+
 	
 </body>
-
 </html>
+

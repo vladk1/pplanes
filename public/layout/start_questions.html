@@ -12,7 +12,10 @@
 
 	<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
 
+	<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+
 	<script src="/javascripts/titles.js"></script>
+
 
 <style type="text/css">
 
@@ -52,10 +55,10 @@
 			<div class="main-text">
 
 				<p>
-					<div class="main-text-question">
+					<div id="title1" class="main-text-question">
 						We can represent uncertainty using an interval.
 					</div>
-				    <paper-radio-group id="q1" selected="the_basic_dart">
+				    <paper-radio-group id="q1">
 				      <paper-radio-button name="i11" 
 				      label="True">
 				      </paper-radio-button>
@@ -68,10 +71,10 @@
 				</p>
 
 				<p>
-				    <div class="main-text-question">
+				    <div id="title2" class="main-text-question">
 						It is better to use a number to represent uncertainty instead of an interval.
 					</div>
-				    <paper-radio-group id="q2" selected="the_basic_dart">
+				    <paper-radio-group id="q2">
 				      <paper-radio-button name="i21" 
 				      label="True">
 				      </paper-radio-button>
@@ -83,10 +86,10 @@
 			    </p>
 
 				<p>
-				    <div class="main-text-question">
+				    <div id="title3" class="main-text-question">
 						The expected cost is equal to the mean of the of the estimation interval boundaries when using Monte Carlo simulation.
 					</div>
-				    <paper-radio-group id="q3" selected="the_basic_dart">
+				    <paper-radio-group id="q3">
 				      <paper-radio-button name="i21" 
 				      label="True">
 				      </paper-radio-button>
@@ -98,10 +101,10 @@
 			    </p>
 
 			    <p>
-				    <div class="main-text-question">
+				    <div id="title4" class="main-text-question">
 						The 95% Confidence Interval limits the variable to take values within the boundaries of the interval.
 					</div>
-				    <paper-radio-group id="q4" selected="the_basic_dart">
+				    <paper-radio-group id="q4">
 				      <paper-radio-button name="i21" 
 				      label="True">
 				      </paper-radio-button>
@@ -113,10 +116,10 @@
 				</p>
 
 				<p>
-				    <div class="main-text-question">
+				    <div id="title5" class="main-text-question">
 						The Monte Carlo simulation samples the variable within the boundaries of the interval given. 
 					</div>
-				    <paper-radio-group id="q5" selected="the_basic_dart">
+				    <paper-radio-group id="q5">
 				      <paper-radio-button name="i21" 
 				      label="True">
 				      </paper-radio-button>
@@ -128,10 +131,10 @@
 				</p>
 
 				<p>
-				    <div class="main-text-question">
+				    <div id="title6" class="main-text-question">
 						The value at risk is the value the asset gains when it is at risk. 
 					</div>
-				    <paper-radio-group id="q6" selected="the_basic_dart">
+				    <paper-radio-group id="q6">
 				      <paper-radio-button name="i21" 
 				      label="True">
 				      </paper-radio-button>
@@ -143,10 +146,10 @@
 				</p>
 
 				<p>
-				    <div class="main-text-question">
+				    <div id="title7" class="main-text-question">
 						Expected Net Benefit is the final value of expected earning.  
 					</div>
-				    <paper-radio-group id="q7" selected="the_basic_dart">
+				    <paper-radio-group id="q7">
 				      <paper-radio-button name="i21" 
 				      label="True">
 				      </paper-radio-button>
@@ -158,6 +161,8 @@
 				</p>
 
 			</div>
+
+			<paper-button class="blue" raised onclick="isAnswered()">Submit</paper-button>
 
 		</section>
 
@@ -180,18 +185,45 @@
 
 
 		<div class="next_button right"> 
-			<a id="footer_next_link_1" href="/planes">
+	
+			<!-- <a id="footer_next_link_1"> -->
 				<paper-button onclick="isAnswered()">
 					
 					<div class="footer-text" id="footer_next_1"></div>
 					<img height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
 					
 				</paper-button>
-			</a>
+			<!-- </a> -->
 		</div>
-	
+
 
 	</footer>
+
+	<paper-toast id="toast" text="Some of the questions were not answered."></paper-toast>
+
+	<script type="text/javascript">
+
+		function isAnswered() {
+			var isAllAnswered = 1;
+			
+			for (var i=1; i<8; i++) {
+				
+				if (document.getElementById('q'+i).selected === null) {
+					isAllAnswered=0;
+					$("#title"+i).css('color', '#FF0000');
+					document.querySelector('#toast').show();
+					localStorage.setItem('start_q'+i, document.getElementById('q'+i).selected);
+				} else {
+					console.log("document.getElementById('q'+1).selected="+document.getElementById('q'+i).selected);
+				}
+			}
+			if (isAllAnswered === 1) {
+				window.open("/planes","_self");
+			}
+
+		}
+
+	</script>
 
 
 </body>

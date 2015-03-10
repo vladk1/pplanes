@@ -75,16 +75,23 @@
 					Theory behind estimation
 				</div>
 				<div class="main-text">
+
+
 					<p>
-						• Choose <span class="highlight">one type</span> of the plane which will give the best benefit in terms of flight distance and the least amount of cost in terms of time it will take to produce.
+						<span class="highlight">The Bayesian Cost Benefit Analysis</span> inspired tool computes the Monte Carlo simulation over each interval of estimation given - building time and flight distance. 
 					</p>
 
 					<p>
-						• <span class="highlight">"The Basic Dart"</span> will give a benefit of <span class="highlight">100</span> points per meter and  <span class="highlight">"The Stable"</span> has <span class="highlight">300</span> points per meter.
+						The intervals are treated as <span class="highlight">95%</span> confidence interval with normal distribution. Therefore, the actual value will be within the interval with 95% confidence.
 					</p>
 
 					<p>
-						• Read brief introduction to uncertainty estimation process:
+						From the sampled data, the tool computes the expected value of each interval. This is represented by the mean value of the samples.
+
+					</p>
+
+					<p>
+						Then it calculates <span class="highlight">the Expected Net Benefit, Value at Risk and Loss Probability.</span>
 					</p>
 				</div>
 			</section>	

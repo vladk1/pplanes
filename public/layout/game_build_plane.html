@@ -20,6 +20,8 @@
 
 	<script type="text/javascript" src="/javascripts/stop_watch.js"></script>
 
+	<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+
 <head>
 	<title></title>
 	
@@ -196,7 +198,7 @@
 
 				<div class="main-text">
 			    	
-		    		<img width="200px" src="/images/the_basic_dart_instr.jpg" alt="The Basic Dart"/>
+		    		<img width="200px" src="/images/the_basic_dart_instr.png" alt="The Basic Dart"/>
 			  	
 			    </div>
 
@@ -284,21 +286,21 @@
 
 
 		<div class="next_button right"> 
-			<a id="footer_next_link_8" href="/">
-				<paper-button>
+			<!-- <a id="footer_next_link_8" href="/"> -->
+				<paper-button onclick="isDone()">
 					
 					<div class="footer-text" id="footer_next_8"></div>
 					
 					<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
 					
 				</paper-button>
-			</a>
+			<!-- </a> -->
 		</div>
 	
 
 	</footer>
 
-
+	<paper-toast id="toast" text="Build a plane and time yourself first."></paper-toast>
 
 	<script type="text/javascript">
 			
@@ -323,12 +325,14 @@
 
 
 			var stopWatch = 0;
+			var startWatch = 0;
 
 
 			function startWatchClick() {
 				// Start the animation.
 				setTimeout(nextFrame, 100);
 				stopWatch = 0;
+				startWatch = 1;
 			}
 
 			function stopWatchClick() {
@@ -339,11 +343,12 @@
 			}
 
 
-			function allDone() {
-				// Start the animation.
-				// stopWatch = 1;
-				calculateResults(current, dec_current, min_current);
-				
+			function isDone() {
+				if (startWatch === 1) {
+					window.open("/flight_distance","_self");
+				} else {
+					document.querySelector('#toast').show();
+				}
 			}
 
 		</script>

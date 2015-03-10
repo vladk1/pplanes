@@ -18,8 +18,13 @@
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 	<script src="/javascripts/titles.js"></script>
 
+	<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+
 <head>
 	<title></title>
+	<style type="text/css">
+	
+	</style>
 
 </head>
 <body>
@@ -43,6 +48,7 @@
 				<div class="main-text-header">
 					Predict your time to build plane and distance it will fly:
 				</div>
+				<!-- <paper-button class="blue" raised onclick=" saveApproximations()">Submit</paper-button> -->
 				<div class="main-text">
 					
 				
@@ -61,14 +67,20 @@
 					<paper-input id="max_time_2" class="estim_plane"  label="max time (s)" floatingLabel></paper-input>
 				
 				</div>
-			
+
+				
 			</section>
+
+			
+			
 
 		</div>	
 
 
-</div>
 
+
+
+</div>
 
 	<footer>
 
@@ -87,7 +99,7 @@
 
 
 		<div class="next_button right"> 
-			<a href="/analysis">
+			<!-- <a href="/analysis"> -->
 				<paper-button onclick="saveApproximations()">
 					
 					<div class="footer-text" id="footer_next_4"></div>
@@ -95,24 +107,37 @@
 					<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
 					
 				</paper-button>
-			</a>
+			<!-- </a> -->
 		</div>
 	
 
 	</footer>
 
+	<paper-toast id="toast" text="Some of the approximations were not complete."></paper-toast>
+
 	<script type="text/javascript">
 
 		function saveApproximations() {
-			localStorage.setItem("min_time_1", document.getElementById('min_time_1').value);
-			localStorage.setItem("max_time_1", document.getElementById('max_time_1').value);
-			localStorage.setItem("min_dist_1", document.getElementById('min_dist_1').value);
-			localStorage.setItem("max_dist_1", document.getElementById('max_dist_1').value);
 
-			localStorage.setItem("min_time_2", document.getElementById('min_time_2').value);
-			localStorage.setItem("max_time_2", document.getElementById('max_time_2').value);
-			localStorage.setItem("min_dist_2", document.getElementById('min_dist_2').value);
-			localStorage.setItem("max_dist_2", document.getElementById('max_dist_2').value);
+			var approximations = ["min_time_1", "max_time_1", "min_dist_1", "max_dist_1", "min_time_2", "max_time_2", "min_dist_2", "max_dist_2"];
+
+			for (var i=0; i<8; i++) {
+				var isAllAnswered=1;
+				var approximation = approximations[i];
+
+				localStorage.setItem(approximation, document.getElementById(approximation).value);
+				console.log("document.getElementById(approximation).value="+document.getElementById(approximation).value);
+
+				if (document.getElementById(approximation).value === "") {
+					isAllAnswered=0;
+					document.querySelector('#toast').show();
+				} 
+
+				if (isAllAnswered === 1) {
+					window.open("/analysis","_self");
+				}
+			}
+
 		}
 		
 	</script>

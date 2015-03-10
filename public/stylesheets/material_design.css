@@ -39,7 +39,10 @@
       }
 
     
-	
+      paper-toast {
+        bottom: 40px;
+        left: 10px;
+      }
 
 /*footer {
 	 position:absolute;

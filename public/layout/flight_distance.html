@@ -18,6 +18,8 @@
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 	<script src="/javascripts/titles.js"></script>
 
+	<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+
 <head>
 	<title></title>
 	<style type="text/css">
@@ -96,7 +98,7 @@
 
 
 		<div class="next_button right"> 
-			<a id="footer_next_link_9" href="/">
+			<!-- <a id="footer_next_link_9" href="/"> -->
 				<paper-button onclick="saveFlightDistance()">
 					
 					<div class="footer-text" id="footer_next_9"></div>
@@ -104,16 +106,23 @@
 					<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
 					
 				</paper-button>
-			</a>
+			<!-- </a> -->
 		</div>
 	
 
 	</footer>
 
+	<paper-toast id="toast" text="Throw your plane and enter flying distance!"></paper-toast>
+
 	<script type="text/javascript">
 
 		function saveFlightDistance() {
 			localStorage.setItem("flight_distance", document.getElementById('flight_distance').value);
+			if (document.getElementById('flight_distance').value === "") {
+				document.querySelector('#toast').show();
+			} else {
+				window.open("/score","_self");
+			}
 		}
 		
 	</script>

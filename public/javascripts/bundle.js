@@ -503,8 +503,8 @@ function Rtool_logic() {
 
 		// (ECost, EBenefit, ENB, LP, VaR)
 		var result = planes_analysis(Cost, Benefit);
-		var jsonData = [{Plane: 1, ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
-						{Plane: 2, ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
+		var jsonData = [{Plane: "The Basic Dart", ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
+						{Plane: "The Stable", ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
 		loadTable('estimations_table', ['Plane', 'ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
 	}
 }

@@ -23,7 +23,29 @@
 <head>
 	<title></title>
 	<style type="text/css">
-	
+		.floated_img {
+	    	float: left;
+	    	margin: 10px;
+	    	width:calc(100% / 4);
+	    	display:inline-block;
+		}
+
+		.instraction_container {
+		    margin-left: 150px;
+		}
+
+		.header_font {
+			color: #4F7DC9;
+			font-size: 30px;
+			text-align: center;
+		}
+
+		.main-text {
+			float: left;
+	    	margin: 10px;
+	    	width:calc(100% / 2);
+	    	display:inline-block;
+		}
 	</style>
 
 </head>
@@ -51,7 +73,6 @@
 				<!-- <paper-button class="blue" raised onclick=" saveApproximations()">Submit</paper-button> -->
 				<div class="main-text">
 					
-				
 					<div> "The Basic Dart": </div>
 					<paper-input id="min_dist_1" class="estim_plane" label="min distance (m)" floatingLabel> </paper-input>
 					<paper-input id="max_dist_1" class="estim_plane" label="max distance (m)" floatingLabel></paper-input>
@@ -66,6 +87,19 @@
 					<paper-input id="min_time_2" class="estim_plane" label="min time (s)" floatingLabel></paper-input>
 					<paper-input id="max_time_2" class="estim_plane"  label="max time (s)" floatingLabel></paper-input>
 				
+				</div>
+
+				<div class="instraction_container">
+					<div class="floated_img">
+				  		<img width="150px" src="/images/the_basic_dart_instr.png" alt="The Basic Dart"/>
+				  		<div class="header_font">£100</div>
+				    </div>
+
+
+				    <div class="floated_img"> 
+				  		<img width="150px" src="/images/the_stable_inst.png" alt="The Stable"/>
+				  		<div class="header_font">£300</div>
+				    </div>
 				</div>
 
 				

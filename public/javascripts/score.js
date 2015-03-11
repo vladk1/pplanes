@@ -30,7 +30,7 @@ function calculateResults() {
 	var timeEstimPercent = (maxTime1 + maxTime2) 
 	console.log("planeType="+planeType);
 	if (planeType === "the_basic_dart") {
-		finalBenefit = 100;
+		finalBenefit = 28;
 		console.log("minTime1="+minTime1+" maxTime1="+maxTime1);
 
 		var timeEstimMean = (minTime1 + maxTime1) / 2;
@@ -41,7 +41,7 @@ function calculateResults() {
 		console.log("timeEstimMean="+timeEstimMean+" scoreSeconds="+scoreSeconds + " timeEstimPercent="+timeEstimPercent);
 		console.log("distEstimMean="+distEstimMean+" planeDist="+planeDist + " distEstimPercent="+distEstimPercent);
 	} else {
-		finalBenefit = 300;
+		finalBenefit = 25;
 		timeEstimPercent = (((minTime2 + maxTime2) / 2) - scoreSeconds) / scoreSeconds;
 		distEstimPercent = (((minDist2 + maxDist2) / 2) - planeDist) / planeDist;
 	}
@@ -52,7 +52,7 @@ function calculateResults() {
 	var strDistEstim = (distEstimPercent*100).toFixed(10);
 	strDistEstim = strDistEstim.substring(0, 6);
 
-	var score = finalBenefit + 20*planeDist - scoreSeconds;
+	var score = finalBenefit*planeDist - scoreSeconds;
 
 
 	$('#score_points').html(score);

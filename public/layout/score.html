@@ -18,7 +18,7 @@
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 	<script src="/javascripts/titles.js"></script>
 
-	<script src="/javascripts/results.js"></script>
+	<script src="/javascripts/score.js"></script>
 
 <head>
 	<title></title>
@@ -43,7 +43,7 @@
 		.main-text {
 			float: left;
 	    	margin: 10px;
-	    	width: calc(100% / 2);
+	    	width: calc(100% / 1.5);
 	    	display:inline-block;
 		}
 
@@ -68,11 +68,19 @@
 
 			<section>
 				<div class="main-text-header">
-					Your score:
+					Thank you very much for playing the game! 
 				</div>
 				<div class="main-text">
 				
-					
+					<p>Overall you managed to get <span class="highlight" id="score_points"></span> points</p>
+
+					<p>Your building time estimations were <span id="time_estimation_type"></span> by <span id="time_estimation_value"></span></p>
+
+					<p>Your flight distance estimations were <span id="distance_estimation_type"></span> by <span id="distance_estimation_value"></span></p>
+
+					<p>With real results your estimation table would look like: (table)</p>
+
+					<p>Therefore we would suggest next time to build (plane)</p>
 				
 				</div>
 

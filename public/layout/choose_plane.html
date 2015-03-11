@@ -68,6 +68,22 @@
 			margin-left: 30px;
 		}
 
+		.text-comment {
+			display:block;
+			font-size: 15px;
+			line-height: 15px;
+			/*color: #1976D2;*/
+			color: #1976D2;
+			
+			
+			width: calc(100%/2);
+			margin-left: auto;
+	    	margin-right: auto;
+	    	margin-top: 20px;
+	    	padding-left: 100px;
+			
+		}
+
 
 </style>
 </head>
@@ -92,14 +108,15 @@
 				<div class="main-text-header">
 					Now it's time to choose between The Basic Dart and The Stable.
 				</div>
-				<div class="main-text">
-					Bear in mind what the analysis tells you.
-				</div>
+				
 
 				 <paper-radio-group id="plane_selection" selected="the_basic_dart">
 			      <paper-radio-button name="the_basic_dart" label="The Basic Dart"></paper-radio-button>
 			      <paper-radio-button name="the_stable" label="The Stable"></paper-radio-button>
 			    </paper-radio-group>
+			    <div class="text-comment">
+					*Bear in mind what the analysis tells you..
+				</div>
 
 
 				<div class="main-text">
@@ -152,7 +169,7 @@ Go to the next page to find out more how you can ease this process. -->
 
 		<div class="next_button right"> 
 			<a id="footer_next_link_7" href="/">
-				<paper-button onclick="savePlane()">
+				<paper-button onclick="saveApproximations()">
 					
 					<div class="footer-text" id="footer_next_7"></div>
 					
@@ -169,6 +186,7 @@ Go to the next page to find out more how you can ease this process. -->
 
 		function saveApproximations() {
 			localStorage.setItem("plane_type", document.getElementById('plane_selection').selected);
+			console.log("planeType="+document.getElementById('plane_selection').selected);
 		}
 		
 	</script>

@@ -128,50 +128,21 @@
 				console.log("build_time="+scoreSeconds);
 			}
 
-		
-			// function calculateResults() {
-			// 	console.log("calculateResults");
-			// 	// $('<p>Text</p>').appendTo('#final_score');
-			// 	var scoreSeconds = current+dec_current*10+min_current*60;
+			window.onload = function() {
+			  putPlanePicture();
+			  updateFooter();
+			};
 
-
-			// 	var minTime1 = localStorage.getItem("min_time_1");
-			// 	var maxTime1 = localStorage.getItem("max_time_1");
-			// 	var minDist1 = localStorage.getItem("min_dist_1");
-			// 	var maxDist1 = localStorage.getItem("max_dist_1");
-
-			// 	var minTime2 = localStorage.getItem("min_time_2");
-			// 	var maxTime2 = localStorage.getItem("max_time_2");
-			// 	var minDist2 = localStorage.getItem("min_dist_2");
-			// 	var maxDist2 = localStorage.getItem("max_dist_2");
-
-
-			// 	var planeType = localStorage.getItem("plane_type");
-			// 	var planeDist = document.getElementById('plane_dist').value;
-
-			// 	console.log(minTime1+maxTime1+minDist1+maxDist1+minTime2+maxTime2+minDist2+maxDist2+planeType);
-
-			// 	// var estim = localStorage.getItem("min_time_1") + localStorage.getItem("max_time_1");
-
-			// 	// FinalBenefit*C1 - abs(FinalCost -CostMean) * C2 - abs(FinalBenefit - BenefitMean)*C3 - FinalCost*C4
-			// 	// FinalBenefit*50 - abs(FinalCost -CostMean) * 0.5 - abs(FinalBenefit - BenefitMean)*0.5 - FinalCost*1
-			// 	var finalBenefit = 0;
-			// 	if (planeType === "the_basic_dart") {
-			// 		finalBenefit = 100;
-			// 	} else {
-			// 		finalBenefit = 300;
-			// 	}
-
-			// 	var score = finalBenefit + 20*planeDist - scoreSeconds;
+			function putPlanePicture() {
+				var planeType = localStorage.getItem("plane_type");
 				
-			// 	$("#final_score").text(score + " points");
-
-				
-			// 	$("#result_container").removeClass("core-header");
-			// 	// remove a class
-			// 	$("#result_container").addClass("core-red-header");
-				
-			// }
+				console.log("planeType="+planeType);
+				if (planeType === "the_basic_dart") {
+					$("#paper_plane_instruction").attr('src', "/images/the_basic_dart_instr.png");
+				} else {
+					$("#paper_plane_instruction").attr('src', "/images/the_stable_inst.png");
+				}
+			}
 		
 		</script>
 
@@ -197,8 +168,8 @@
 				
 
 				<div class="main-text">
-			    	
-		    		<img width="200px" src="/images/the_basic_dart_instr.png" alt="The Basic Dart"/>
+			    	<!-- src="/images/the_basic_dart_instr.png" -->
+		    		<img id="paper_plane_instruction" width="200px" alt="The Basic Dart"/>
 			  	
 			    </div>
 

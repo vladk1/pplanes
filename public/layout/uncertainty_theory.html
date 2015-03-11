@@ -79,24 +79,23 @@
 				<div class="main-text">
 
 					<p>
-						The situation, looks like this: you have two planes with different properties and you need to play one of them. Probably you have no idea on how difficult it is to build any of the planes or how would they perfom. Or maybe you can say "it couldn't be less than this and more than this". In fact, this is how you deal with uncertainty, you can use <span class="highlight">estimation intervals</span>. But what can you do with this?
+						The situation, looks like this: you have two planes with different properties and you need to play one of them. Probably you have no idea on how difficult it is to build any of the planes or how would they perfom. Or maybe you can say "it couldn't be less than this and more than this". In fact, this is how you deal with uncertainty, you use <span class="highlight">estimation intervals</span>. But what can you do with this?
 					</p>
 
 					<p>
-						We use <span class="highlight">The Bayesian Cost Benefit Analysis</span> inspired tool which computes Monte Carlo simulation over each interval of estimation given by you - building time and flight distance. 
+						We use a <span class="highlight">Bayesian Cost Benefit Analysis</span> inspired tool which computes Monte Carlo simulation over each interval of estimation given by you - building time and flight distance. 
 					</p>
 
 					<p>
-						The intervals are treated as <span class="highlight">95%</span> confidence interval with normal distribution. Therefore, the actual value will be within the interval with 95% confidence. Some of the values would be outside the interval. When you do this, you need to have a 95% confidence in the interval estimated.
+						The intervals are treated as <span class="highlight">95%</span> confidence intervals with normal distributions. Some of the values would be outside the interval. Therefore, when you do the estimation, you need to have a pretty confident estimation interval.
 					</p>
 
 					<p>
-						From the sampled data, the tool computes the expected value of each interval. This is represented by the mean value of the samples.
-
+						From the sampled data, the tool computes the expected value of each interval. This is represented by the mean value of the samples. Applying the rules of the game, it translates the measurements from meters and seconds to points. This gives you the <span class="highlight">Expected Cost</span> and the <span class="highlight">Expected Benefit</span>.
 					</p>
 
 					<p>
-						Then it calculates <span class="highlight">the Expected Net Benefit, Value at Risk and Loss Probability.</span>
+						Then, it calculates the <span class="highlight">Expected Net Benefit</span>, <span class="highlight">Value at Risk</span> and <span class="highlight">Loss Probability.</span>
 					</p>
 				</div>
 			</section>	

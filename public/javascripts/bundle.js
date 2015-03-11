@@ -486,15 +486,21 @@ function Rtool_logic() {
 	// cb_data[6] = document.getElementById('min_dist_2').value;
 	// cb_data[7] = document.getElementById('max_dist_2').value;
 
+	// the basic dart
 	cb_data[0] = localStorage.getItem("min_time_1");
 	cb_data[1] = localStorage.getItem("max_time_1");
 	cb_data[2] = localStorage.getItem("min_dist_1");
 	cb_data[3] = localStorage.getItem("max_dist_1");
+	cb_data[2] *= 25;	// to make even 3 meters with 60 seconds
+	cb_data[3] *= 25;
 
+	// the stable
 	cb_data[4] = localStorage.getItem("min_time_2");
 	cb_data[5] = localStorage.getItem("max_time_2");
 	cb_data[6] = localStorage.getItem("min_dist_2");
 	cb_data[7] = localStorage.getItem("max_dist_2");
+	cb_data[6] *= 28;
+	cb_data[7] *= 28;
 
 	if (cb_data.every(isNumber)) {
 		var sim = generate_cb_sim_mean(N, cb_data);

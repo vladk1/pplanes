@@ -222,7 +222,7 @@
 
 		function isAnswered() {
 			var isAllAnswered = 1;
-			var answersArray = ["true","false","false","false","true","false","false"];
+			var answersArray = ["true","false","false","false","true","false","true"];
 			var correctlyAnswered = 0;
 			
 			for (var i=1; i<8; i++) {
@@ -236,7 +236,7 @@
 					localStorage.setItem('start_q'+i, selectedValue);
 				} else {
 					console.log("document.getElementById('q'+1).selected="+document.getElementById('q'+i).selected);
-					if (answersArray[i] === selectedValue) {
+					if (answersArray[i-1] === selectedValue) {
 						correctlyAnswered++;
 					} else {
 						$("#title"+i).css('color', '#FF0000');

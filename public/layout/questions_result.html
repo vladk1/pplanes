@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'> -->
+	<link rel="import" href="/bower_components/polymer/polymer.html">
+	<link rel="import" href="/bower_components/paper-button/paper-button.html">
+	<link rel="import" href="/bower_components/paper-input/paper-input.html">
+	<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+
+
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_design.css">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_font.css">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_colour.css">
+
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_table.css">
+
+	 <link href='http://fonts.googleapis.com/css?family=Roboto:300,100' rel='stylesheet' type='text/css'>
+
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+	
+
+	<script src="/javascripts/titles.js"></script>
+	
+	<script src="/javascripts/bundle.js"></script>
+
+
+<head>
+	<title></title>
+	<style type="text/css">
+
+		body {
+			font-family: 'Roboto';
+			margin: 0px;
+			padding: 0px;
+			top: 50%;
+	    	left: 50%;
+		}
+
+		.floated_img {
+	    	float: left;
+	    	margin: 10px;
+	    	width: calc(100% / 3);
+	    	display: inline-block;
+		}
+
+		.instraction_container {
+		    /*margin-left: 50px;*/
+		}
+
+		.main-text {
+			float: left;
+	    	margin: 10px;
+	    	width: calc(100% / 1);
+	    	display:inline-block;
+		}
+
+
+	
+</style>
+
+
+
+
+</head>
+<body>
+	
+	<div id="wrap">
+
+		<header class="white_font">
+
+			<section>
+				<object class="logo" height="100px" type="image/svg+xml" data="/images/pplane2.svg">Your browser does not support SVG</object>
+				<div class="page-header-title" id="header_title_12"></div>
+				
+			</section>	
+
+		</header>
+
+
+		<div id="content">
+
+			<section>
+				<div class="main-text-header">
+					This is what the Bayesian Cost Benefit Analysis tells of your data:
+				</div>
+				<div class="main-text">
+				
+					<div class="header_font">
+
+						<table id="estimations_table" class="table no-border table-hover table-mc-light-blue">
+					  	</table>
+
+					</div>	
+
+					<span class="highlight">Ecost</span> or Expected Cost, is the mean value of sampling the estimated cost<br>
+					<span class="highlight">EBenefit</span> or Expected Benefit, is the mean value of sampling the estimated benefit<br>
+					<span class="highlight">ENB</span> is the Excepted Net Benefit, which is indeed the Expected Benefit - Expected Cost<br>
+					<span class="highlight">LP</span> is the Loss Probability, which reflects the probability to lose the value at risk<br>
+					<span class="highlight">VaR</span> is the Value at Risk and represents how much value you might lose in this scenario<br>
+					<br>
+					Take a note of what the results are. <span class="highlight">You will have to make a decision next! </span>
+				</div>
+
+			
+			</section>
+
+		</div>	
+
+
+</div>
+
+
+	<footer>
+
+
+		<div class="previous_button left"> 
+			<a id="footer_back_link_12" href="/">
+				<paper-button>
+					
+					<img class="footer-header-left" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-left_24x24px.svg"/>
+
+					<div class="footer-text" id="footer_back_12"></div>
+					
+				</paper-button>
+			</a>
+		</div>
+
+
+		<div class="next_button right"> 
+			<a href="/">
+				<paper-button>
+					
+					<div class="footer-text">Play the game again!</div>
+					
+					<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
+					
+				</paper-button>
+			</a>
+		</div>
+	
+
+	</footer>
+
+	
+
+</body>
+</html>

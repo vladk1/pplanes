@@ -57,6 +57,12 @@ app.get('/flight_distance', function(req,res){
 app.get('/score', function(req,res){
     res.sendfile('./public/layout/score.html');
 });
+app.get('/end_questions', function(req,res){
+    res.sendfile('./public/layout/end_questions.html');
+});
+app.get('/questions_result', function(req,res){
+    res.sendfile('./public/layout/questions_result.html');
+});
 
 
 

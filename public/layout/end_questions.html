@@ -3,9 +3,6 @@
 <head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-	
 	<link rel="import" href="/bower_components/paper-button/paper-button.html">
 	
 	<link href='http://fonts.googleapis.com/css?family=Roboto:300,100' rel='stylesheet' type='text/css'>
@@ -23,6 +20,8 @@
 <style type="text/css">
 
 		
+	
+	}
 
 </style>
 
@@ -40,7 +39,7 @@
 
 			<object class="logo" height="100px" type="image/svg+xml" data="/images/pplane2.svg">Your browser does not support SVG</object>
 
-			<div id="header_title_1" class="page-header-title"></div>
+			<div id="header_title_11" class="page-header-title"></div>
 			
 		</section>	
 
@@ -171,6 +170,14 @@
 
 			<paper-button class="blue" raised onclick="isAnswered()">Submit</paper-button>
 
+			<p style="visibility:hidden;" id="result_comment_1">
+				Your starting answers were correct by <span id="start_q_highlight" class="highlight"></span>
+			</p>
+
+			<p style="visibility:hidden;" id="result_comment_2">
+				After playing our game it improved to <span id="end_q_highlight" class="highlight"></span>
+			</p>
+
 		</section>
 
 	</div>
@@ -180,11 +187,11 @@
 
 
 		<div class="previous_button left"> 
-			<a id="footer_back_link_2" href="/">
+			<a id="footer_back_link_11" href="/">
 				<paper-button>
 					
 					<img height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-left_24x24px.svg"/>
-					<div class="footer-text" id="footer_back_1"></div>
+					<div class="footer-text" id="footer_back_11"></div>
 					
 				</paper-button>
 			</a>
@@ -192,15 +199,15 @@
 
 
 		<div class="next_button right"> 
-	
-			<!-- <a id="footer_next_link_1"> -->
-				<paper-button onclick="isAnswered()">
+			<a href="/">
+				<paper-button>
 					
-					<div class="footer-text" id="footer_next_1"></div>
-					<img height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
+					<div class="footer-text">Play the game again!</div>
+					
+					<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
 					
 				</paper-button>
-			<!-- </a> -->
+			</a>
 		</div>
 
 
@@ -228,18 +235,32 @@
 					console.log("document.getElementById('q'+1).selected="+document.getElementById('q'+i).selected);
 					if (answersArray[i] === selectedValue) {
 						correctlyAnswered++;
+					} else {
+						$("#title"+i).css('color', '#FF0000');
 					}
 				}
 			}
-			var correctPercentage = (correctlyAnswered / answersArray.length)*100;
 
-			var strCorrectAnswered = (correctPercentage).toFixed(10);
+			$("#start_q_highlight").html(localStorage.getItem('start_questions_percent')+"%");
+
+			var correctlyAnswered = (correctlyAnswered / answersArray.length)*100;
+
+			var strCorrectAnswered = (correctlyAnswered).toFixed(10);
 			strCorrectAnswered = strCorrectAnswered.substring(0, 6);
-			localStorage.setItem('start_questions_percent', strCorrectAnswered);
 
-			if (isAllAnswered === 1) {
-				window.open("/planes","_self");
-			}
+			$("#end_q_highlight").html(strCorrectAnswered+"%");
+
+			// $("#result_comment_1").visibility='visible';
+			document.getElementById('result_comment_1').style.visibility='visible';
+			document.getElementById('result_comment_2').style.visibility='visible';
+			// $("#result_comment_2").visibility='visible';
+
+
+			// localStorage.setItem('end_questions_percent', correctlyAnswered/answersArray.length);
+
+			// if (isAllAnswered === 1) {
+			// 	window.open("/questions_result","_self");
+			// }
 
 		}
 

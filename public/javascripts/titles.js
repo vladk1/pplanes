@@ -34,6 +34,12 @@ urls.push("/flight_distance");
 titles.push("Score");
 urls.push("/score");
 
+titles.push("Knowlege questions");
+urls.push("/end_questions");
+
+titles.push("Results");
+urls.push("/questions_result");
+
 
 window.onload = function() {
   updateFooter();

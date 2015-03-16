@@ -73,30 +73,30 @@
 		<div id="content">
 
 			<section>
-				<div class="main-text-header">
-					Theory behind estimation
-				</div>
 				<div class="main-text">
+				<div class="main-text-header">
+					How many flights are from London to Paris every day?*
+				</div>
 
-					<p>
-						The situation, looks like this: you have two planes with different properties and you need to play one of them. Probably you have no idea on how difficult it is to build any of the planes or how would they perfom. Or maybe you can say "it couldn't be less than this and more than this". In fact, this is how you deal with uncertainty, you use <span class="highlight">estimation intervals</span>. But what can you do with this?
-					</p>
+				<p>
+					There is more than one possible answer to this question. To reduce this uncertainty, we approximate an <span class="highlight">interval</span>. 
+				</p>
+				<p>
+					A scientific approach would be to use a <span class="highlight">95% Confidence Interval</span>. There will be 2.5% chance that the true answer is below the lower bound and 2.5% chance that it is above the upper bound.
+				</p>
+				<p>
+					Good approximation of the probability distribution can be computed through <span class="highlight">Monte Carlo simulation</span>. From this, one can compute the expected answer.
+				</p>
+				<p>
+					Uncertainty is important in the early stages of software development when
+					an organisation makes strategic decisions about which
+					projects to fund, or when software architects make tradeoff design decisions. These	decisions aim at maximising the benefits, subject to cost and time constraints.
+				</p>
 
-					<p>
-						We use a <span class="highlight">Bayesian Cost Benefit Analysis</span> inspired tool which computes Monte Carlo simulation over each interval of estimation given by you - building time and flight distance. 
-					</p>
+				<div class="text-comment">
+					*around 35-40 planes
+				</div>
 
-					<p>
-						The intervals are treated as <span class="highlight">95%</span> confidence intervals with normal distributions. Some of the values would be outside the interval. Therefore, when you do the estimation, you need to have a pretty confident estimation interval.
-					</p>
-
-					<p>
-						From the sampled data, the tool computes the expected value of each interval. This is represented by the mean value of the samples. Applying the rules of the game, it translates the measurements from meters and seconds to points. This gives you the <span class="highlight">Expected Cost</span> and the <span class="highlight">Expected Benefit</span>.
-					</p>
-
-					<p>
-						Then, it calculates the <span class="highlight">Expected Net Benefit</span>, <span class="highlight">Value at Risk</span> and <span class="highlight">Loss Probability.</span>
-					</p>
 				</div>
 
 				<div class="instraction_container">

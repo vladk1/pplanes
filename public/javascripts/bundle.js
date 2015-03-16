@@ -456,35 +456,55 @@ function generate_cb_sim_mean(N, cb_data) {
 		Cost[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 0], cb_data[plane_offset + 1], 0);
 		Benefit[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 2], cb_data[plane_offset + 3], 0);
 	}
+	// tudor plays here
 
+	var fields = ["#","Cost 1st plane", "Benefit 1st plane", "Cost 2nd plane", "Benefit 2nd plane"];
+	var data = Array(15);
+	var offset = 11;
+	for (var i=0; i<15; i++){
+		data[i] = [i+offset, Cost[0][i+offset],Benefit[0][i+offset],
+		Cost[1][i+offset],Benefit[1][i+offset]];
+	}
+	var rows = '<thead>' + '<tr>';
+    $.each(fields, function(index, field){
+    	rows += '<th>' + field + '' + '</td>';
+    });
+    rows += '</tr>' + '</thead>';
+    rows += '<tr><td></td><td>...</td><td>...</td><td>...</td><td>...</td></tr>';
+    $.each(data, function(index, item) {
+        var row = '<tr>';
+        $.each(fields, function(index, field) {
+        	if (index === 0) {
+				row += '<td class="highlight">' + item[index] + '</td>';
+        	} else {
+            	row += '<td>' + item[index].toPrecision(6) + '</td>';
+      		}
+        });
+        rows += row + '</tr>';
+    });
+    var meanCost1 = getMean([Cost[0]]);
+    var meanBenefit1 = getMean([Benefit[0]]);
+    var meanCost2 = getMean([Cost[1]]);
+    var meanBenefit2 = getMean([Benefit[1]]);
+    console.log("Cost: " + Cost[0]);
+    console.log("length: " + Cost[0].length);
+    console.log("mean: " + meanCost1);
+    rows += '<tr><td></td><td>...</td><td>...</td><td>...</td><td>...</td></tr>';
+    rows += '<tr><td class="highlight">Expected</td><td>' + meanCost1[0];
+    rows += '</td><td>' + meanBenefit1[0];
+    rows += '</td><td>' + meanCost1[0];
+    rows += '</td><td>' + meanBenefit2[0] + '</td></tr>';
+    rows += '</tbody>';
+    $('#mcsimtable').html($('#mcsimtable').val() + rows);
+
+	// back
 	return [Cost, Benefit];
 }
 
 var tac = 0;
 function Rtool_logic() {
-	// LOL
-	var N = Math.pow(10,3);
+	var N = Math.pow(10,4);
 	var cb_data = [];
-
-	// var minTime1 = localStorage.getItem("min_time_1");
-	// 			var maxTime1 = localStorage.getItem("max_time_1");
-	// 			var minDist1 = localStorage.getItem("min_dist_1");
-	// 			var maxDist1 = localStorage.getItem("max_dist_1");
-
-	// 			var minTime2 = localStorage.getItem("min_time_2");
-	// 			var maxTime2 = localStorage.getItem("max_time_2");
-	// 			var minDist2 = localStorage.getItem("min_dist_2");
-	// 			var maxDist2 = localStorage.getItem("max_dist_2");
-
-	// cb_data[0] = document.getElementById('min_time_1').value;
-	// cb_data[1] = document.getElementById('max_time_1').value;
-	// cb_data[2] = document.getElementById('min_dist_1').value;
-	// cb_data[3] = document.getElementById('max_dist_1').value;
-
-	// cb_data[4] = document.getElementById('min_time_2').value;
-	// cb_data[5] = document.getElementById('max_time_2').value;
-	// cb_data[6] = document.getElementById('min_dist_2').value;
-	// cb_data[7] = document.getElementById('max_dist_2').value;
 
 	// the basic dart
 	cb_data[0] = localStorage.getItem("min_time_1");
@@ -512,6 +532,15 @@ function Rtool_logic() {
 		var jsonData = [{Plane: "The Basic Dart", ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
 						{Plane: "The Stable", ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
 		loadTable('estimations_table', ['Plane', 'ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
+		
+		// save data locally, Tudor plays here
+		var names = ["Plane", "ECost", "EBenefit", "ENB", "LP", "VaR"];
+		for (var k=0; k<2; k++) {
+			for (var i=0; i<6; i++) {
+				var name = names[i];
+				localStorage.setItem(name+""+k, result[k][i]);
+			}
+		}
 	}
 }
 
@@ -590,6 +619,8 @@ function getVaR(NB, q) {
 	return result;
 }
 
+
+// This
 function loadTable(tableId, fields, data) {
     var rows = '<thead>' + '<tr>';
     $.each(fields, function(index, field){

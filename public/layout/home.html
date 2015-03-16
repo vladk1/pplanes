@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html>
-	
-	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
-	<link rel="import" href="/bower_components/polymer/polymer.html">
-	<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
-	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_design.css">
-	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_font.css">
-	 <link rel="stylesheet" type="text/css" href="/stylesheets/material_colour.css">
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
 
-	 <link href='http://fonts.googleapis.com/css?family=Roboto:300,100' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/stylesheets/material_design.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/material_font.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/material_colour.css">
 
-	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300,100' rel='stylesheet' type='text/css'>
+
+<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 
 <head>
 	<title></title>
 	<style type="text/css">
 
- 			#logo {
- 				display: inline-block;
- 				margin: 0px;
- 				margin-right: 15px;
- 			}
+		#logo {
+			display: inline-block;
+			margin: 0px;
+			margin-right: 15px;
+		}
 
- 			#header_title  {
- 				display: inline-block;
- 				width: calc(100% / 1.5);
- 				text-align: top;
- 			}
+		#header_title  {
+			display: inline-block;
+			width: calc(100% / 1.5);
+			text-align: top;
+		}
+
+		.main-text {
+			font-size: 25px;
+		}
 		
 	</style>
 </head>
@@ -37,75 +41,69 @@
 	
 	<div id="wrap">
 
-	<header class="white_font">
+		<header class="white_font">
 
-	<section>
+			<section>
 
-		<object id="logo" height="200px" type="image/svg+xml" data="/images/pplane2.svg">Your browser does not support SVG</object>
+				<object id="logo" height="200px" type="image/svg+xml" data="/images/pplane2.svg">Your browser does not support SVG</object>
 
-		<div id="header_title">
+				<div id="header_title">
 
-			<div class="page-header-title">Paper Planes</div>
-			<div class="page-header-sub-title">
-				&nbsp&nbsp&nbsp&nbsp or decision making under <span class="yellow">uncertainty</span>
-			</div>
+					<div class="page-header-title">Paper Planes</div>
+					<div class="page-header-sub-title">
+						&nbsp&nbsp&nbsp&nbsp or decision making under <span class="yellow">uncertainty</span>
+					</div>
 
-		</div>	
-	</section>
-
-
-		
-	</header>
+				</div>	
+			</section>
 
 
-	<div id="content">
 
-		<section>
+		</header>
+
+
+		<div id="content">
+
+			<section>
 		<!-- 	<div class="main-text-header">
-			</div> -->
-			<div class="main-text">
-				<p>
-					This website provides you with the opportunity to experience the use of <span class="highlight">cost-benefit analysis</span>  to perform decisions under uncertainty. Given the scenario where you have to score as many points as possible by making a paper plane and fly it, you’ll be introduced to the following key concepts: Monte Carlo Simulation, Expected Net Benefit, Value at Risk, Loss Probability.
-				</p>
-
-				<p>
-					It seems straight forward, right?
-
-				</p>
-
-				<p>
-					But you have to choose between 2 planes. Which one would fit you best?   <br>This is what uncertainty feels like. You'll learn more about this.
-				</p>
-
-				<p>
-					In return we ask you to answer a few questions in the start and by the end of the session. This helps us to evaluate the value of the material provided. Thank you!
-				</p>
-			</div>
-
-		</section>	
-
+	</div> -->
+	<div class="main-text">
+		<p>
+			Uncertainty and complexity adds difficulty to decisions in software development.
+			We introduce a game version that will ease your way to maximize the benefit.
+		</p>
+		<p>
+			You'll have to choose between 2 paper planes, each with different properties and rewards. This is a parallel to having 2 strategies in software development, where you have to choose one and pursue it. In both cases you are trying to get maximum reward.
+		</p>
+		<p>
+			We'll take you through a step by step process that will make you understand how several concepts can help you in making decisions.
+		</p>
 	</div>
 
-	</div>
+</section>	
 
-	<footer>
+</div>
+
+</div>
+
+<footer>
 
 
-		<div class="next_button right"> 
-			<a href="/start_questions">
-				<paper-button>
-					
-					<div class="footer-text"> <wbr> Questions </wbr> </div>
-					
-					<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
-					
-				</paper-button>
-			</a>
-		</div>
-	
+	<div class="next_button right"> 
+		<a href="/start_questions">
+			<paper-button>
 
-	</footer>
+			<div class="footer-text"> <wbr> Questions </wbr> </div>
 
-	
+			<img class="footer-header-right" height="20px" src="http://material-design.storage.googleapis.com/images/Arrow-right_24x24px.svg"/>
+
+		</paper-button>
+	</a>
+</div>
+
+
+</footer>
+
+
 </body>
 </html>

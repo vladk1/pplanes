@@ -52,26 +52,30 @@
 		<section>
 
 			<div class="main-text-header">
-			Choose whether the statements are True or False. 
-			<!-- <p>
-				Firstly, how much do you know about these concepts?
-			</p> -->
-			
+			Answer the following questions 
 			</div>
 		
 			<div class="main-text">
 
 				<p>
 					<div id="title1" class="main-text-question">
-						We can represent uncertainty using an interval.
+						<span class="highlight">Suppose your boss asks for the delivery date of the projects you are managing. You give a 90% confidence interval of 14 to 21 days. What does this mean?</span>
 					</div>
 				    <paper-radio-group id="q1">
-				      <paper-radio-button name="true" 
-				      label="True">
+				      <paper-radio-button name="a" 
+				      label="You have very little information about how many days the project will last">
 				      </paper-radio-button>
 
-				      <paper-radio-button name="false" 
-				      label="False">
+				      <paper-radio-button name="b" 
+				      label="You believe there is a 90% chance the actual date will be after 14 to 21 days">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="c" 
+				      label="You are 90% sure the actual number of days will be outside the range of 14 to 21">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="d" 
+				      label="You are certain the number of days will be between 12.6 and 18.9">
 				      </paper-radio-button>
 
 				    </paper-radio-group>
@@ -79,22 +83,30 @@
 
 				<p>
 				    <div id="title2" class="main-text-question">
-						It is better to use a number to represent uncertainty instead of an interval.
+						<span class="highlight">How would you maximize the Net Benefit?</span>
 					</div>
 				    <paper-radio-group id="q2">
-				      <paper-radio-button name="true" 
-				      label="True">
+				      <paper-radio-button name="a" 
+				      label="Increase Benefit">
 				      </paper-radio-button>
 
-				      <paper-radio-button name="false" 
-				      label="False">
+				      <paper-radio-button name="b" 
+				      label="Decrease Cost">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="c" 
+				      label="Decrease Cost, decrease Benefit">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="d" 
+				      label="Decrease Cost, increase Benefit">
 				      </paper-radio-button>
 				    </paper-radio-group>
 			    </p>
 
 				<p>
 				    <div id="title3" class="main-text-question">
-						The expected cost is equal to the mean of the of the estimation interval boundaries when using Monte Carlo simulation.
+						<span class="highlight">Monte Carlo simulation is considered to be a bad technique to approximate probability distribution.</span>
 					</div>
 				    <paper-radio-group id="q3">
 				      <paper-radio-button name="true" 
@@ -109,7 +121,7 @@
 
 			    <p>
 				    <div id="title4" class="main-text-question">
-						The 95% Confidence Interval limits the variable to take values within the boundaries of the interval.
+						<span class="highlight">Uncertainty is important in the early stages of software development when an organisation makes initial architectural decisions.</span>
 					</div>
 				    <paper-radio-group id="q4">
 				      <paper-radio-button name="true" 
@@ -124,37 +136,53 @@
 
 				<p>
 				    <div id="title5" class="main-text-question">
-						The Monte Carlo simulation samples the variable within the boundaries of the interval given. 
+						<span class="highlight">Suppose you have a project which has a value at risk of 10000£. What does it mean?</span>
 					</div>
 				    <paper-radio-group id="q5">
-				      <paper-radio-button name="true" 
-				      label="True">
+				      <paper-radio-button name="a" 
+				      label="The project's value increses to 10000£ when it is at risk">
 				      </paper-radio-button>
 
-				      <paper-radio-button name="false" 
-				      label="False">
+				      <paper-radio-button name="b" 
+				      label="It is possible to lose 10000£ if the project is pursued">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="c" 
+				      label="It is possible to earn or lose 10000£ if the project is continued">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="d" 
+				      label="Nothing happens">
 				      </paper-radio-button>
 				    </paper-radio-group>
 				</p>
 
 				<p>
 				    <div id="title6" class="main-text-question">
-						The value at risk is the value the asset gains when it is at risk. 
+						<span class="highlight">A project with 0.8 Loss Probability </span>
 					</div>
 				    <paper-radio-group id="q6">
-				      <paper-radio-button name="true" 
-				      label="True">
+				      <paper-radio-button name="a" 
+				      label="Should be stopped">
 				      </paper-radio-button>
 
-				      <paper-radio-button name="false" 
-				      label="False">
+				      <paper-radio-button name="b" 
+				      label="Should be continued">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="c" 
+				      label="The decisions depends on the value at risk">
+				      </paper-radio-button>
+
+				      <paper-radio-button name="d" 
+				      label="Cross fingers and pursue the project">
 				      </paper-radio-button>
 				    </paper-radio-group>
 				</p>
 
 				<p>
 				    <div id="title7" class="main-text-question">
-						Expected Net Benefit is the final value of expected earning.  
+						<span class="highlight">Probabilities can't be used to describe your uncertainty about future events. </span>
 					</div>
 				    <paper-radio-group id="q7">
 				      <paper-radio-button name="true" 
@@ -212,7 +240,7 @@
 
 		function isAnswered() {
 			var isAllAnswered = 1;
-			var answersArray = ["true","false","false","false","true","false","true"];
+			var answersArray = ["b","d","false","true","b","c","false"];
 			var correctlyAnswered = 0;
 			
 			for (var i=1; i<8; i++) {

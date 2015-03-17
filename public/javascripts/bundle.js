@@ -456,7 +456,11 @@ function generate_cb_sim_mean(N, cb_data) {
 		Cost[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 0], cb_data[plane_offset + 1], 0);
 		Benefit[k] 	= rnorm_fromCI(N, cb_data[plane_offset + 2], cb_data[plane_offset + 3], 0);
 	}
-	// tudor plays here
+	
+	return [Cost, Benefit];
+}
+
+function display_MCsim(Cost, Benefit) {
 
 	var fields = ["#","Cost 1st plane", "Benefit 1st plane", "Cost 2nd plane", "Benefit 2nd plane"];
 	var data = Array(15);
@@ -486,19 +490,14 @@ function generate_cb_sim_mean(N, cb_data) {
     var meanBenefit1 = getMean([Benefit[0]]);
     var meanCost2 = getMean([Cost[1]]);
     var meanBenefit2 = getMean([Benefit[1]]);
-    console.log("Cost: " + Cost[0]);
-    console.log("length: " + Cost[0].length);
-    console.log("mean: " + meanCost1);
+
     rows += '<tr><td></td><td>...</td><td>...</td><td>...</td><td>...</td></tr>';
     rows += '<tr><td class="highlight">Expected</td><td>' + meanCost1[0];
     rows += '</td><td>' + meanBenefit1[0];
-    rows += '</td><td>' + meanCost1[0];
+    rows += '</td><td>' + meanCost2[0];
     rows += '</td><td>' + meanBenefit2[0] + '</td></tr>';
     rows += '</tbody>';
     $('#mcsimtable').html($('#mcsimtable').val() + rows);
-
-	// back
-	return [Cost, Benefit];
 }
 
 var tac = 0;
@@ -527,20 +526,17 @@ function Rtool_logic() {
 		var Cost = sim[0];
 		var Benefit = sim[1];
 
+		display_MCsim(Cost, Benefit);
+
 		// (ECost, EBenefit, ENB, LP, VaR)
 		var result = planes_analysis(Cost, Benefit);
 		var jsonData = [{Plane: "The Basic Dart", ECost: result[0][0], EBenefit: result[1][0], ENB: result[2][0], LP: result[3][0], VaR: result[4][0]},
 						{Plane: "The Stable", ECost: result[0][1], EBenefit: result[1][1], ENB: result[2][1], LP: result[3][1], VaR: result[4][1]}];
-		loadTable('estimations_table', ['Plane', 'ECost', 'EBenefit', 'ENB', 'LP', 'VaR'], jsonData);
 		
-		// save data locally, Tudor plays here
-		var names = ["Plane", "ECost", "EBenefit", "ENB", "LP", "VaR"];
-		for (var k=0; k<2; k++) {
-			for (var i=0; i<6; i++) {
-				var name = names[i];
-				localStorage.setItem(name+""+k, result[k][i]);
-			}
-		}
+		// save data locally
+		localStorage.setItem("jsonData", JSON.stringify(jsonData));
+		//localStorage.setItem("jsonData2", JSON.stringify(jsonData[1]));
+
 	}
 }
 
@@ -619,29 +615,6 @@ function getVaR(NB, q) {
 	return result;
 }
 
-
-// This
-function loadTable(tableId, fields, data) {
-    var rows = '<thead>' + '<tr>';
-    $.each(fields, function(index, field){
-    	rows += '<th>' + field + '' + '</td>';
-    });
-    rows += '</tr>' + '</thead>';
-
-    $.each(data, function(index, item) {
-        var row = '<tr>';
-        $.each(fields, function(index, field) {
-        	if (index === 0) {
-				row += '<td class="highlight">' + item[field+''] + '</td>';
-        	} else {
-            	row += '<td>' + item[field+''] + '</td>';
-      		}
-        });
-        rows += row + '</tr>';
-    });
-    rows += '</tbody>';
-    $('#' + tableId).html($('#'+tableId).val() + rows);
-}
 
 $(document).ready(function(){
     window.onload = function() {

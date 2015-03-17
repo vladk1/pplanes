@@ -28,57 +28,46 @@ function calculateResults() {
 	
 	var finalBenefit = 0;
 	var timeEstimPercent = (maxTime1 + maxTime2) 
+	var timeInterval = Array(2);
+	var distInterval = Array(2);
+
 	console.log("planeType="+planeType);
 	if (planeType === "the_basic_dart") {
 		finalBenefit = 28;
 		console.log("minTime1="+minTime1+" maxTime1="+maxTime1);
 
-		var timeEstimMean = (minTime1 + maxTime1) / 2;
-		timeEstimPercent = (timeEstimMean - scoreSeconds) / scoreSeconds;
-		var distEstimMean = (minDist1 + maxDist1) / 2;
-		distEstimPercent = (distEstimMean - planeDist) / planeDist;
+		timeInterval[0] = minTime1;
+		timeInterval[1] = maxTime1;
+		distInterval[0] = minDist1;
+		distInterval[1] = maxDist1;
 
-		console.log("timeEstimMean="+timeEstimMean+" scoreSeconds="+scoreSeconds + " timeEstimPercent="+timeEstimPercent);
-		console.log("distEstimMean="+distEstimMean+" planeDist="+planeDist + " distEstimPercent="+distEstimPercent);
 	} else {
 		finalBenefit = 25;
-		timeEstimPercent = (((minTime2 + maxTime2) / 2) - scoreSeconds) / scoreSeconds;
-		distEstimPercent = (((minDist2 + maxDist2) / 2) - planeDist) / planeDist;
+		
+		timeInterval[0] = minTime2;
+		timeInterval[1] = maxTime2;
+		distInterval[0] = minDist2;
+		distInterval[1] = maxDist2;
 	}
-
-	var strTimeEstim = (timeEstimPercent*100).toFixed(10);
-	strTimeEstim = strTimeEstim.substring(0, 6);
-
-	var strDistEstim = (distEstimPercent*100).toFixed(10);
-	strDistEstim = strDistEstim.substring(0, 6);
 
 	var score = finalBenefit*planeDist - scoreSeconds;
-
-
 	$('#score_points').html(score);
-	
-	if (timeEstimPercent < 0) {
-		$('#time_estimation_type').html("underestimated");
-		$("#time_estimation_type").addClass("bad_highlight");
-		$('#time_estimation_value').addClass("bad_highlight");
+
+	$('#time_estimation_min').html(timeInterval[0]);
+	$('#time_estimation_max').html(timeInterval[1]);
+	$('#real_time').html(scoreSeconds);
+	if(scoreSeconds < timeInterval[0] || scoreSeconds > timeInterval[1]) {
+		$('#real_time').addClass("bad_highlight");
 	} else {
-		$('#time_estimation_type').html("overestimated");
-		$("#time_estimation_type").addClass("highlight");
-		$('#time_estimation_value').addClass("highlight");
+		$('#real_time').addClass("highlight");
 	}
 
-	if (distEstimPercent < 0) {
-		$('#distance_estimation_type').html("underestimated");
-		$("#distance_estimation_type").addClass("bad_highlight");
-		$('#distance_estimation_value').addClass("bad_highlight");
+	$('#dist_estimation_min').html(distInterval[0]);
+	$('#dist_estimation_max').html(distInterval[1]);
+	$('#real_dist').html(planeDist);
+	if(planeDist < distInterval[0] || planeDist > distInterval[1]) {
+		$('#real_dist').addClass("bad_highlight");
 	} else {
-		$('#distance_estimation_type').html("overestimated");
-		$("#distance_estimation_type").addClass("highlight");
-		$('#distance_estimation_value').addClass("highlight");
-	}
-
-	$('#time_estimation_value').html(strTimeEstim +"%");
-	
-	$('#distance_estimation_value').html(strDistEstim +"%");
-	
+		$('#real_dist').addClass("highlight");
+	}	
 }

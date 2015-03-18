@@ -10,7 +10,7 @@ urls.push("/start_questions");
 titles.push("Paper Planes");
 urls.push("/planes");
 
-titles.push("Uncertainty Theory");
+titles.push("Elicit Uncertainty");
 urls.push("/uncertainty");
 
 titles.push("Uncertainty Approximation");
